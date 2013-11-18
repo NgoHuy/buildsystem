@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 186646 2013-05-30 12:12:25Z tomegun $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
-# Contributor: Gabriel Martinez < reitaka at gmail dot com >
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Original Contributor: Gabriel Martinez < reitaka at gmail dot com >
 
-pkgname=usbmuxd
-pkgver=1.0.8
-pkgrel=2
 pkgdesc="USB Multiplex Daemon"
 url="http://marcansoft.com/blog/iphonelinux/usbmuxd/"
 arch=('i686' 'x86_64')
@@ -12,12 +9,12 @@ license=('GPL2' 'GPL3' 'LGPL2.1')
 depends=('libusb' 'libplist')
 makedepends=('cmake')
 install=usbmuxd.install
-source=("http://cgit.sukimashita.com/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.bz2"
+source=("http://cgit.sukimashita.com/${pkgbase}.git/snapshot/${pkgbase}-${pkgver}.tar.bz2"
 	'usbmuxd.service'
 	'85-usbmuxd.rules')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   echo "${pkgver}" > version.tag
   mkdir build
   cd build
@@ -26,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgbase}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 
   # fix udev dir being hardcoded
@@ -40,6 +37,3 @@ package() {
   # use udev rule that works with systemd
   install -m644 ${srcdir}/85-usbmuxd.rules ${pkgdir}/usr/lib/udev/rules.d/ 
 }
-md5sums=('87fd27773a84e97ac6e2dc28b08d682e'
-         'dae0660f972510a6483992b5b81e1b5a'
-         'dc4b2893651149eccbf7b2c8467cd288')
