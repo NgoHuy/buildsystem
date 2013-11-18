@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 180697 2013-03-25 22:01:08Z jgc $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=dconf
-pkgver=0.16.0
-pkgrel=1
 pkgdesc="A low-level configuration system."
 arch=(i686 x86_64)
 url="http://live.gnome.org/dconf"
@@ -12,11 +9,10 @@ depends=('glib2' 'gtk-update-icon-cache')
 makedepends=('vala' 'gtk3' 'intltool' 'docbook-xsl' 'python')
 optdepends=('gtk3: for dconf-editor')
 install=dconf.install
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('192d682b8e160e22506f3fac6847444013c7cdbef188d937a6ae2b357f9134bb')
+source=(http://download.gnome.org/sources/$pkgbase/${pkgver%.*}/$pkgbase-$pkgver.tar.xz)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   ./configure --prefix=/usr --sysconfdir=/etc \
     --libexecdir=/usr/lib/dconf
@@ -24,7 +20,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make completiondir=/usr/share/bash-completion/completions DESTDIR="$pkgdir" install
 }
 
