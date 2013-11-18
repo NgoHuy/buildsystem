@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 97131 2013-09-13 13:17:48Z bgyorgy $
-# Maintainer: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
-# Contributor: AndyRTR <andyrtr@archlinux.org>
-# Contributor: kiefer <jorgelmadrid@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Original Contributor: AndyRTR <andyrtr@archlinux.org>
+# Original Contributor: kiefer <jorgelmadrid@gmail.com>
 
-pkgname=lxdm
-pkgver=0.4.1
-pkgrel=27
 pkgdesc='Lightweight X11 Display Manager'
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/lxdm/"
@@ -15,19 +12,16 @@ depends=('gtk2' 'xorg-server' 'iso-codes')
 makedepends=('intltool')
 optdepends=('gtk-engines: default GTK+ theme'
             'librsvg: display the default background')
-install=$pkgname.install
+install=$pkgbase.install
 backup=('etc/lxdm/lxdm.conf' 'etc/pam.d/lxdm' 'etc/lxdm/Xsession'
         'etc/lxdm/PreLogin' 'etc/lxdm/LoginReady' 'etc/lxdm/PostLogin'
         'etc/lxdm/PostLogout' 'etc/lxdm/PreReboot' 'etc/lxdm/PreShutdown')
-source=(http://downloads.sourceforge.net/lxde/$pkgname-$pkgver.tar.gz
+source=(http://downloads.sourceforge.net/lxde/$pkgbase-$pkgver.tar.gz
         git-fixes.patch
         default-config.patch)
-md5sums=('8da1cfc2be6dc9217c85a7cf51e1e821'
-         '03d0779fbac1a9964776c82e69fbc53e'
-         'c61ec8ffd3fe8bd2a6a9178393622f4c')
 
 prepare(){
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   # Apply various fixes from git
   patch -Np1 -i ../git-fixes.patch
@@ -40,7 +34,7 @@ prepare(){
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   autoreconf -fi
   ./configure --prefix=/usr --sbindir=/usr/bin --libexecdir=/usr/lib/lxdm \
               --sysconfdir=/etc --localstatedir=/var
@@ -48,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
   chmod 644 "$pkgdir/etc/lxdm/lxdm.conf"
 
