@@ -21,10 +21,9 @@ backup=(etc/fcron/fcron.conf etc/fcron/fcron.allow etc/fcron/fcron.deny \
 options=('emptydirs' '!makeflags')
 source=(http://fcron.free.fr/archives/$pkgbase-$pkgver.src.tar.gz \
         systab systab.orig run-cron)
-md5sums=()
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   ./configure --prefix=/usr \
               --sysconfdir=/etc/fcron \
               --with-answer-all=no \
@@ -47,12 +46,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir/" install
-  install -D -m644 "$srcdir/$pkgname-$pkgver/files/fcron.pam" "$pkgdir/etc/pam.d/fcron"
+  install -D -m644 "$srcdir/$pkgbase-$pkgver/files/fcron.pam" "$pkgdir/etc/pam.d/fcron"
 
-  install -D -m644 "$srcdir/$pkgname-$pkgver/files/fcrontab.pam" "$pkgdir/etc/pam.d/fcrontab"
+  install -D -m644 "$srcdir/$pkgbase-$pkgver/files/fcrontab.pam" "$pkgdir/etc/pam.d/fcrontab"
   # Install default fcrontab so that fcron can completely replace dcron
 
   # FIXME: Is there any way to regenerate this binary file?
