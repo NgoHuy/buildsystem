@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 186886 2013-05-31 14:05:55Z andyrtr $
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=libxt
-pkgver=1.1.4
-pkgrel=1
 pkgdesc="X11 toolkit intrinsics library"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
@@ -13,7 +10,6 @@ depends=('libsm' 'libx11')
 makedepends=('xorg-util-macros')
 options=('!libtool')
 source=("${url}/releases/individual/lib/libXt-${pkgver}.tar.bz2")
-sha256sums=('843a97a988f5654872682a4120486d987d853a71651515472f55519ffae2dd57')
 
 build() {
   cd "${srcdir}/libXt-${pkgver}"
@@ -25,6 +21,6 @@ package() {
   cd "${srcdir}/libXt-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/"
 }
