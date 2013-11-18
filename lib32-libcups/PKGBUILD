@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 94114 2013-07-14 13:25:37Z bluewind $
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 _pkgbasename=libcups
-pkgname=lib32-$_pkgbasename
-pkgver=1.6.3
-pkgrel=1
 pkgdesc="The CUPS Printing System - client libraries (32-bit)"
 arch=('x86_64')
 license=('GPL')
@@ -14,8 +11,6 @@ makedepends=(gcc-multilib)
 source=(#ftp://ftp.easysw.com/pub/cups/${pkgver}/cups-${pkgver}-source.tar.bz2
 http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.gz
 fix-libusb-configure.patch)
-md5sums=('3c50d396fef2ba721224fe65880fe3c3'
-         '9cf39a66f21d1208a585367b25cf117b')
 
 build() {
   export CC="gcc -m32"
