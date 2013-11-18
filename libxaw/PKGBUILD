@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194287 2013-09-13 07:15:08Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=libxaw
-pkgver=1.0.12
-pkgrel=1
 pkgdesc="X11 Athena Widget library"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -12,7 +9,6 @@ depends=('libxmu' 'libxpm')
 makedepends=('xorg-util-macros')
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXaw-${pkgver}.tar.bz2)
-sha256sums=('96fc314874fce9979556321d1d6ee00b5baf32fb333b7278853b4983bc3cdbf6')
 
 build() {
   cd "${srcdir}/libXaw-${pkgver}"
@@ -24,5 +20,5 @@ package() {
   cd "${srcdir}/libXaw-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
 }
