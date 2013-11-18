@@ -1,23 +1,18 @@
-# $Id: PKGBUILD 150466 2012-02-18 00:38:09Z allan $
-# Contributor: Eric Belanger <eric@archlinux.org>
-# Maintainer:
+# Maintainer: Severus <severus@theslinux.org>
+# Original Contributor: Eric Belanger <eric@archlinux.org>
+# Original Maintainer:
 
-pkgname=ispell
-pkgver=3.3.02
-pkgrel=5
 pkgdesc="An interactive spell-checking program for Unix"
 arch=('i686' 'x86_64')
 url="http://ficus-www.cs.ucla.edu/geoff/ispell.html"
 license=('BSD')
 depends=('ncurses')
 options=('!makeflags')
-source=(http://fmg-www.cs.ucla.edu/geoff/tars/${pkgname}-${pkgver}.tar.gz 
+source=(http://fmg-www.cs.ucla.edu/geoff/tars/${pkgbase}-${pkgver}.tar.gz 
 	license.txt getline.patch)
-md5sums=('12087d7555fc2b746425cd167af480fe' 'bf51b6181b9914dedc266ba970bb7319'
-	 '1dca21c5d56405fe592175c3dde2fda2')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	patch -Np0 -i ${srcdir}/getline.patch
 
@@ -29,7 +24,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
         # creating directory structure
         install -dm755 ${pkgdir}/usr/{bin,lib/ispell,share/man/man{1,5}}
@@ -53,5 +48,5 @@ package() {
 
 	# Installing license
 	install -Dm644 ${srcdir}/license.txt \
-	    ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+	    ${pkgdir}/usr/share/licenses/${pkgbase}/license.txt
 }
