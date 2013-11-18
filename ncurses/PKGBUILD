@@ -1,25 +1,20 @@
-# $Id: PKGBUILD 180174 2013-03-18 14:39:56Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
+# Original Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=ncurses
-pkgver=5.9
-pkgrel=5
 pkgdesc="System V Release 4.0 curses emulation library"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/ncurses/"
 license=('MIT')
 depends=('glibc')
-source=(ftp://ftp.gnu.org/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.sig})
-md5sums=('8cb9c412e5f2d96bc6f459aa8c6282a1'
-         '014ffdbbfec6d41a9a89d6cbe6434638')
+source=(ftp://ftp.gnu.org/pub/gnu/${pkgbase}/${pkgbase}-${pkgver}.tar.gz{,.sig})
 
 build() {
   cd ${srcdir}/
   mkdir ncurses{,w}-build
 
   cd ${srcdir}/ncursesw-build
-  ../${pkgname}-${pkgver}/configure --prefix=/usr --mandir=/usr/share/man \
+  ../${pkgbase}-${pkgver}/configure --prefix=/usr --mandir=/usr/share/man \
      --with-shared --with-normal --without-debug --without-ada \
      --enable-widec --enable-pc-files
   # add --enable-ext-colors and --enable-ext-mouse with next soname bump
@@ -28,7 +23,7 @@ build() {
   # libraries for external binary support 
   cd ${srcdir}/ncurses-build
   [ $CARCH = "x86_64" ] && CONFIGFLAG="--with-chtype=long"
-  ../${pkgname}-${pkgver}/configure --prefix=/usr \
+  ../${pkgbase}-${pkgver}/configure --prefix=/usr \
     --with-shared --with-normal --without-debug --without-ada $CONFIGFLAG
   make
 }
@@ -62,7 +57,7 @@ package() {
   done
 
   # install license, rip it from the readme
-  cd ${srcdir}/${pkgname}-${pkgver}
-  install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
-  grep -B 100 '$Id' README > ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+  cd ${srcdir}/${pkgbase}-${pkgver}
+  install -dm755 ${pkgdir}/usr/share/licenses/$pkgbase
+  grep -B 100 '$Id' README > ${pkgdir}/usr/share/licenses/${pkgbase}/license.txt
 }
