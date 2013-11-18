@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 194219 2013-09-10 22:35:14Z andrea $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=kdebase-runtime
-pkgver=4.11.1
-pkgrel=2
 pkgdesc="Plugins and applications necessary for the running of KDE applications"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-runtime'
@@ -17,11 +14,9 @@ optdepends=('kdepimlibs: needed by DrKonqi to send crash reports to KDE.org'
             'gdb: needed by DrKonqi to generate backtrace'
             'htdig: to build the search index in the KHelpCenter'
             'rarian: needed by KHelpCenter')
-install="${pkgname}.install"
+install="${pkgbase}.install"
 source=("http://download.kde.org/stable/${pkgver}/src/kde-runtime-${pkgver}.tar.xz"
         'kdebug-324470.patch')
-sha1sums=('3457ffdbd1921bc6bc78cd8a9a463822d515b079'
-          '80db2d34f9e62dbea5d7e94b7bef93d2cf46f6d7')
 
 prepare() {
   mkdir build
