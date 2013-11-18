@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 97530 2013-09-23 16:16:40Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Mark Coolen <mark.coolen@gmail.com>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
-# Contributor: Kevin Piche <kevin@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Original Contributor: Mark Coolen <mark.coolen@gmail.com>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Original Contributor: Kevin Piche <kevin@archlinux.org>
 
-pkgname=squid
-pkgver=3.3.9
-pkgrel=1
 pkgdesc='Full-featured Web proxy cache server'
 arch=('x86_64' 'i686')
 url='http://www.squid-cache.org'
@@ -16,18 +13,14 @@ license=('GPL')
 options=('emptydirs')
 backup=('etc/squid/squid.conf'
         'etc/squid/mime.conf')
-install=$pkgname.install
-source=("http://www.squid-cache.org/Versions/v3/3.3/$pkgname-$pkgver.tar.bz2"
+install=$pkgbase.install
+source=("http://www.squid-cache.org/Versions/v3/3.3/$pkgbase-$pkgver.tar.bz2"
         'squid.pam'
         'squid.cron'
         'squid.service')
-md5sums=('f08bffe795260cecca828331c579e0c4'
-         '270977cdd9b47ef44c0c427ab9034777'
-         'a71425c4951f2e5b640d19e6a5048531'
-         'ceeb57c69ebb165676219222f109a24e')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   # gcc 4.6 doesn't support -fhuge-objects.
   sed '/^    HUGE_OBJECT_FLAG=/ s/"-fhuge-objects"//' -i configure
@@ -51,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   ./configure \
     --prefix=/usr \
@@ -94,7 +87,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  make -C "$pkgbase-$pkgver" DESTDIR="$pkgdir" install
   install -Dm755 "$srcdir/squid.cron" "$pkgdir/etc/cron.weekly/squid"
   install -Dm644 "$srcdir/squid.pam" "$pkgdir/etc/pam.d/squid"
   install -Dm644 "$srcdir/squid.service" \
