@@ -11,7 +11,7 @@ license=('APACHE')
 source=("http://www.apache.org/dist/apr/${PACKAGE_BASE}-${PACKAGE_VERSION}.tar.bz2")
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --with-apr=/usr \
@@ -25,11 +25,11 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make -j1 check
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
