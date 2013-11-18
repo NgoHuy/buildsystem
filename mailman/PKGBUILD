@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 83753 2013-02-05 01:20:08Z seblu $
-# Maintainer: Sébastien Luttringer
-# Contributor: Paul Mattal <paul@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sébastien Luttringer
+# Original Contributor: Paul Mattal <paul@archlinux.org>
 
-pkgname=mailman
-pkgver=2.1.15
-pkgrel=3
 pkgdesc='The GNU Mailing List Manager'
 arch=(i686 x86_64)
 license=('GPL')
@@ -14,20 +11,15 @@ depends=('glibc' 'python2' 'smtp-server')
 makedepends=('mailman')
 # 'Defaults.py' should not be changed by users; 'mm_cfg.py' should instead.
 backup=('usr/lib/mailman/Mailman/mm_cfg.py')
-install=$pkgname.install
-source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tgz"
+install=$pkgbase.install
+source=("http://ftp.gnu.org/gnu/$pkgbase/$pkgbase-$pkgver.tgz"
         'mailman-2.1-build.patch'
-        "$pkgname.profile.sh"
-        "$pkgname.profile.csh"
-        "$pkgname.service")
-md5sums=('7d207489e8e9de0727cb334d46029833'
-         'ed04d062379eb21e39ce1e70e6b1ade2'
-         'a9c71ec940c56173415fbd49087d10b0'
-         '85a8c30ffc444e677b286f54df530482'
-         'f3ea6ef02ab135274406ce52ea8bbb7b')
+        "$pkgbase.profile.sh"
+        "$pkgbase.profile.csh"
+        "$pkgbase.service")
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   # some files in mailman doesn't use configure parameter
   find . -type f -exec \
     sed -i '1s,^#! \?/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \;
@@ -49,7 +41,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
   # let's follow Fedora FHS way; Gentoo does it the other way round
@@ -62,8 +54,8 @@ package() {
   # experienced mailman admins will expect to find it there. But having it
   # "appear" in the config directory is good practice and heading in the
   # right direction for FHS compliance.
-  install -d -m755 "$pkgdir/etc/$pkgname"
-  ln -sv /usr/lib/mailman/Mailman/mm_cfg.py "$pkgdir/etc/$pkgname/mm_cfg.py"
+  install -d -m755 "$pkgdir/etc/$pkgbase"
+  ln -sv /usr/lib/mailman/Mailman/mm_cfg.py "$pkgdir/etc/$pkgbase/mm_cfg.py"
   # fix some permissions to satisfy check_perms
   chown -R mailman:mailman "$pkgdir"/{usr/lib/mailman,var/lib/mailman,etc/mailman/*}
   chown http:mailman "$pkgdir"/var/lib/mailman/archives/private
@@ -72,11 +64,11 @@ package() {
   chmod 2755 "$pkgdir"/usr/lib/mailman/mail/mailman
   cd "$srcdir"
   # systemd
-  install -Dm 644 $pkgname.service \
-    "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm 644 $pkgbase.service \
+    "$pkgdir/usr/lib/systemd/system/$pkgbase.service"
   # profiles
-  install -Dm 755 $pkgname.profile.sh "$pkgdir/etc/profile.d/$pkgname.sh"
-  install -Dm 755 $pkgname.profile.csh "$pkgdir/etc/profile.d/$pkgname.csh"
+  install -Dm 755 $pkgbase.profile.sh "$pkgdir/etc/profile.d/$pkgbase.sh"
+  install -Dm 755 $pkgbase.profile.csh "$pkgdir/etc/profile.d/$pkgbase.csh"
 }
 
 # vim:set ts=2 sw=2 et:
