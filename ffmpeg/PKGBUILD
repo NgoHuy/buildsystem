@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 192418 2013-08-11 13:04:56Z bpiotrowski $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
-# Contributor: Paul Mattal <paul@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Original Contributor: Paul Mattal <paul@archlinux.org>
 
-pkgname=ffmpeg
-pkgver=2.0.1
-pkgrel=1
 epoch=1
 pkgdesc="Complete and free Internet live audio and video broadcasting solution for Linux/Unix"
 arch=('i686' 'x86_64')
@@ -18,11 +15,10 @@ depends=(
       'v4l-utils' 'x264' 'xvidcore' 'zlib'
       )
 makedepends=('libvdpau' 'yasm')
-source=(http://ffmpeg.org/releases/$pkgname-$pkgver.tar.bz2)
-sha256sums=('611eae7e3485d5fd9ff03e0ac7575ea89bc8105e40e99a40de02324957482f95')
+source=(http://ffmpeg.org/releases/$pkgbase-$pkgver.tar.bz2)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
 
   ./configure \
     --prefix=/usr \
@@ -67,7 +63,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install install-man
   install -D -m755 tools/qt-faststart "$pkgdir/usr/bin/qt-faststart"
 }
