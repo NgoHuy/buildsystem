@@ -6,7 +6,6 @@
 
 # FIXME: patch files should not use absolute string 2.8.6
 
-pkgname=('abiword' 'abiword-plugins')
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.abisource.com"
@@ -51,7 +50,7 @@ build() {
 package_abiword() {
   pkgdesc="A fully-featured word processor"
   depends=('fribidi' 'wv' 'goffice0.8' 'librsvg' 'enchant' 'desktop-file-utils')
-  install=$pkgname.install
+  install=$pkgbase.install
   optdepends=('abiword-plugins')
   conflicts=("abiword-plugins<${pkgver}-${pkgrel}")
 
