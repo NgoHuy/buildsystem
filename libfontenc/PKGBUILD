@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 183669 2013-04-26 12:46:13Z andyrtr $
-#Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+#Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=libfontenc
-pkgver=1.1.2
-pkgrel=1
 pkgdesc="X11 font encoding library"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
@@ -11,11 +8,10 @@ license=('custom')
 depends=('zlib')
 makedepends=('pkgconfig' 'xproto>=7.0.18')
 options=('!libtool')
-source=(${url}/releases/individual/lib/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('a9a4efed3359b2e80161bb66b65038fac145137fa134e71335264cbc23b02f62')
+source=(${url}/releases/individual/lib/${pkgbase}-${pkgver}.tar.bz2)
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --with-encodingsdir=/usr/share/fonts/encodings      
@@ -23,7 +19,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
 }
