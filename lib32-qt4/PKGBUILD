@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 80785 2012-12-03 16:17:19Z bluewind $
-# Maintainer: Florian Pritz <flo@xssn.at>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Florian Pritz <flo@xssn.at>
+# Original Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgbasename=qt4
-pkgname=lib32-$_pkgbasename
-pkgver=4.8.5
-pkgrel=3
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
 url='http://qt-project.org/'
@@ -23,7 +20,6 @@ replaces=(lib32-qtwebkit 'lib32-qt<=4.8.4')
 conflicts=(lib32-qtwebkit lib32-qt)
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz")
-md5sums=('1864987bdbb2f58f8ae8b350dfdbe133')
 
 prepare() {
   cd $srcdir/$_pkgfqn
@@ -91,5 +87,5 @@ package() {
 
   rm -rf "${pkgdir}"/usr/{include,share,bin,tests}
   mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase"
 }
