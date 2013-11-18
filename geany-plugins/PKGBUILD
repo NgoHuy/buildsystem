@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 85998 2013-03-10 22:27:29Z arodseth $
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>  
-# Contributor: djgera
-# Contributor: Patrick Melo <patrick@patrickmelo.eti.br>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Original Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>  
+# Original Contributor: djgera
+# Original Contributor: Patrick Melo <patrick@patrickmelo.eti.br>
 
-pkgname=geany-plugins
-pkgver=1.23
-pkgrel=1
 pkgdesc='Plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
@@ -16,12 +13,11 @@ depends=("geany=$pkgver" 'gtkspell' 'libwebkit' 'ctpl' 'gpgme' 'vte'
 makedepends=('intltool' 'vala' 'gdb' 'cppcheck')
 optdepends=('hspell: hebrew spell checker')
 options=('!libtool')
-install="$pkgname.install"
-source=("http://plugins.geany.org/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('ff26860edd1cbaea88c73bd8c2bd02f9ba04046674f05d3696baf66582e2bf58')
+install="$pkgbase.install"
+source=("http://plugins.geany.org/$pkgbase/$pkgbase-$pkgver.tar.bz2")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   # The geanylua plugin currently doesn't work with lua 5.2, only 5.1
   ./configure --prefix=/usr --libexecdir=/usr/lib
@@ -29,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
