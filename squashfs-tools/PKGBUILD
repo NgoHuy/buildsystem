@@ -11,12 +11,12 @@ depends=('zlib' 'lzo2' 'xz')
 source=("http://downloads.sourceforge.net/sourceforge/squashfs/squashfs${pkgver}.tar.gz")
 
 build() {
-    cd ${srcdir}/squashfs${pkgver}/${pkgname}
+    cd ${srcdir}/squashfs${pkgver}/${pkgbase}
     make XZ_SUPPORT=1 LZO_SUPPORT=1 LZMA_XZ_SUPPORT=1
 }
 
 package() {
-    cd ${srcdir}/squashfs${pkgver}/${pkgname}
+    cd ${srcdir}/squashfs${pkgver}/${pkgbase}
     install -Dm755 mksquashfs ${pkgdir}/usr/bin/mksquashfs
     install -m755 unsquashfs ${pkgdir}/usr/bin/unsquashfs
 }
