@@ -1,21 +1,17 @@
-# $Id: PKGBUILD 193644 2013-08-26 17:37:56Z ronald $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Original Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=embryo
-pkgver=1.7.8
-pkgrel=1
 pkgdesc="implementation of a C like scripting language for e17"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('glibc' 'eina')
 options=('!libtool')
-source=(http://download.enlightenment.org/releases/$pkgname-$pkgver.tar.gz)
-sha1sums=('879c0dd75de6c402707da4981716a2b7c1dab618')
+source=(http://download.enlightenment.org/releases/$pkgbase-$pkgver.tar.gz)
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
 
   export CFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CFLAGS}"
   export CXXFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CXXFLAGS}"
@@ -28,11 +24,11 @@ build() {
 }
 
 package(){
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install
 
   # install license files
-  install -Dm644 $srcdir/$pkgname-$pkgver/COPYING \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 $srcdir/$pkgbase-$pkgver/COPYING \
+        $pkgdir/usr/share/licenses/$pkgbase/COPYING
 }
 
