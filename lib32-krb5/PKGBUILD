@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 92858 2013-06-17 10:07:32Z bluewind $
-# Maintainer: Florian Pritz <flo@xinu.at>
-# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Florian Pritz <flo@xinu.at>
+# Original Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 _pkgbasename=krb5
-pkgname=lib32-$_pkgbasename
-pkgver=1.11.3
-pkgrel=1
 pkgdesc="The Kerberos network authentication system (32-bit)"
 arch=('x86_64')
 url="http://web.mit.edu/kerberos/"
@@ -14,8 +11,6 @@ depends=('lib32-e2fsprogs' 'lib32-libldap' 'lib32-keyutils' "$_pkgbasename")
 makedepends=('perl' 'gcc-multilib')
 source=("http://web.mit.edu/kerberos/dist/${_pkgbasename}/1.11/${_pkgbasename}-${pkgver}-signed.tar"
         krb5-config_LDFLAGS.patch)
-sha1sums=('df708a530a22ed09c7825742c108180319b10463'
-          '09e478cddfb9d46d2981dd25ef96b8c3fd91e1aa')
 options=('!emptydirs')
 
 build() {
@@ -64,5 +59,5 @@ package() {
 
    rm -rf "${pkgdir}"/usr/{include,share,bin,sbin}
    mkdir -p "$pkgdir/usr/share/licenses"
-   ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+   ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase"
 }
