@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 188961 2013-06-27 12:33:51Z heftig $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
 
-pkgname=libva
-pkgver=1.2.1
-pkgrel=1
 pkgdesc="Video Acceleration (VA) API for Linux"
 arch=('i686' 'x86_64')
 url="http://freedesktop.org/wiki/Software/vaapi"
@@ -13,19 +10,18 @@ makedepends=('mesa')
 optdepends=('libva-vdpau-driver: vdpau back-end for nvidia'
             'libva-intel-driver: back-end for intel cards')
 options=('!libtool')
-source=(http://www.freedesktop.org/software/vaapi/releases/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha1sums=('f716a4cadd670b14f44a2e833f96a2c509956339')
+source=(http://www.freedesktop.org/software/vaapi/releases/$pkgbase/$pkgbase-$pkgver.tar.bz2)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -m644 -D COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -m644 -D COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
