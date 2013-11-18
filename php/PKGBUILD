@@ -1,8 +1,7 @@
-# $Id: PKGBUILD 194598 2013-09-19 15:26:26Z pierre $
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=php
-pkgname=('php'
          'php-cgi'
          'php-apache'
          'php-fpm'
@@ -21,8 +20,6 @@ pkgname=('php'
          'php-sqlite'
          'php-tidy'
          'php-xsl')
-pkgver=5.5.4
-pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -33,13 +30,6 @@ makedepends=('apache' 'imap' 'postgresql-libs' 'libldap' 'postfix' 'libvpx'
 source=("http://www.php.net/distributions/${pkgbase}-${pkgver}.tar.xz"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('32c1dc56701d21def91a39a312392b54'
-         'f9ee638591aaf1526767db7976d95847'
-         'dec2cbaad64e3abf4f0ec70e1de4e8e9'
-         '880afea327bb00c47082d22c507e6bfc'
-         'e036c721e5ad927cd1613c7475a58b3a'
-         'cc2940f5312ba42e7aa1ddfab74b84c4'
-         'c60343df74f8e1afb13b084d5c0e47ed')
 
 prepare() {
 	cd ${srcdir}/${pkgbase}-${pkgver}
