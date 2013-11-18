@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 96400 2013-08-27 14:39:51Z lcarlier $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 _pkgbasename=cairo
-pkgname=lib32-$_pkgbasename
-pkgver=1.12.16
-pkgrel=1
 pkgdesc="Cairo vector graphics library (32-bit)"
 arch=('x86_64')
 url="http://cairographics.org/"
@@ -14,7 +11,6 @@ depends=('lib32-libpng' 'lib32-libxext' 'lib32-libxrender' 'lib32-fontconfig'
          'lib32-pixman' 'lib32-glib2' 'lib32-mesa' 'lib32-libgl' ${_pkgbasename})
 source=(http://cairographics.org/releases/${_pkgbasename}-${pkgver}.tar.xz)
 options=(!libtool)
-sha1sums=('4f6e337d5d3edd7ea79d1426f575331552b003ec')
 
 build() {
   export CC="gcc -m32"
