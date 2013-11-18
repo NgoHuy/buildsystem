@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 193812 2013-09-02 09:41:54Z andyrtr $
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: AndyRTR <andyrtr@archlinux.org>
 
 ### !!! rebuild groff from core that picks up hardcoding the GS versioned font path !!! ###
 
-pkgname=ghostscript
-pkgver=9.10
-pkgrel=1
 pkgdesc="An interpreter for the PostScript language"
 arch=('i686' 'x86_64')
 license=('AGPL' 'custom')
@@ -17,7 +14,6 @@ optdepends=('texlive-core:      needed for dvipdf'
 url="http://www.ghostscript.com/"
 source=(http://downloads.ghostscript.com/public/ghostscript-${pkgver}.tar.bz2)
 options=('!libtool' '!makeflags')
-md5sums=('7179bb1ed4f6f453147e6f7e1f210ce8')
 
 build() {
   cd ghostscript-${pkgver}
@@ -59,7 +55,7 @@ package() {
   # install missing doc files # http://bugs.archlinux.org/task/18023
   install -m 644 "${srcdir}"/ghostscript-${pkgver}/doc/{Ps2ps2.htm,gs-vms.hlp,gsdoc.el,pscet_status.txt} "${pkgdir}"/usr/share/ghostscript/$pkgver/doc/
   
-  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
 
   # remove unwanted localized man-pages
   rm -rf "$pkgdir"/usr/share/man/[^man1]*
