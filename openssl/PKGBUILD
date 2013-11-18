@@ -22,7 +22,7 @@ source=("https://www.openssl.org/source/${pkgbase}-${_pkgver}.tar.gz"
         'ca-dir.patch')
 
 build() {
-	cd $srcdir/$pkgname-$_pkgver
+	cd $srcdir/$pkgbase-$_pkgver
 
 	if [ "${CARCH}" == 'x86_64' ]; then
 		openssltarget='linux-x86_64'
@@ -54,7 +54,7 @@ build() {
 }
 
 check() {
-	cd $srcdir/$pkgname-$_pkgver
+	cd $srcdir/$pkgbase-$_pkgver
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
 	patch -p0 -R -i $srcdir/ca-dir.patch
@@ -63,7 +63,7 @@ check() {
 }
 
 package() {
-	cd $srcdir/$pkgname-$_pkgver
+	cd $srcdir/$pkgbase-$_pkgver
 	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgbase/LICENSE
 }
