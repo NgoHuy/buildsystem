@@ -1,15 +1,12 @@
-# $Id: PKGBUILD 97548 2013-09-24 06:48:52Z heftig $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Original Contributor: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: valgrind requires rebuilt with each major glibc version
 
 _pkgbasename=glibc
-pkgname=lib32-$_pkgbasename
-pkgver=2.18
-pkgrel=5
 pkgdesc="GNU C Library for multilib"
 arch=('x86_64')
 url="http://www.gnu.org/software/libc"
@@ -23,14 +20,6 @@ source=(http://ftp.gnu.org/gnu/libc/${_pkgbasename}-${pkgver}.tar.xz{,.sig}
         glibc-2.18-ptr-mangle-CVE-2013-4788.patch
         glibc-2.18-strstr-hackfix.patch
         lib32-glibc.conf)
-md5sums=('88fbbceafee809e82efd52efa1e3c58f'
-         'SKIP'
-         '154da6bf5a5248f42a7bf5bf08e01a47'
-         'b79561ab9dce900e9bbeaf0d49927c2b'
-         'c7264b99d0f7e51922a4d3126182c40a'
-         '9749ba386b08a8fe53e7ecede9bf2dfb'
-         '4441f6dfe7d75ced1fa75e54dd21d36e'
-         '6e052f1cb693d5d3203f50f9d4e8c33b')
 
 prepare() {
   cd ${srcdir}/${_pkgbasename}-${pkgver}
