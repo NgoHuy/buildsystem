@@ -1,28 +1,24 @@
-# $Id: PKGBUILD 187819 2013-06-06 14:47:18Z giovanni $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=strace
-pkgver=4.8
-pkgrel=1
 pkgdesc="A useful diagnositic, instructional, and debugging tool"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/strace/"
 license=('custom')
 depends=('perl')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-$pkgver.tar.xz")
-md5sums=('c575ef43829586801f514fd91bfe7575')
+source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}-$pkgver.tar.xz")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   make DESTDIR="${pkgdir}/" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
