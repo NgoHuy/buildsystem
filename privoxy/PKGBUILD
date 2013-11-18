@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 80121 2012-11-16 16:59:43Z lfleischer $
-# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
-# Contributor: Juergen Hoetzel <juergen@hoetzel.info>
-# Contributor: basilburn (basilburn), Paul Bredbury (brebs) 
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
+# Original Contributor: Juergen Hoetzel <juergen@hoetzel.info>
+# Original Contributor: basilburn (basilburn), Paul Bredbury (brebs) 
 
-pkgname=privoxy
-pkgver=3.0.19
-pkgrel=7
 pkgdesc='A web proxy with advanced filtering capabilities.'
 arch=('i686' 'x86_64')
 url='http://www.privoxy.org'
@@ -17,19 +14,14 @@ backup=('etc/conf.d/privoxy'
         'etc/privoxy/'{match-all,user}.action
         'etc/logrotate.d/privoxy')
 install='privoxy.install'
-source=("http://downloads.sourceforge.net/ijbswa/${pkgname}-${pkgver}-stable-src.tar.gz"
+source=("http://downloads.sourceforge.net/ijbswa/${pkgbase}-${pkgver}-stable-src.tar.gz"
         'privoxy'
         'privoxy.logrotate.d'
         'privoxy.conf.d'
         'privoxy.service')
-md5sums=('57acc79059565cc42eda67982842785d'
-         '1b4ed8c4e7e5b04b10ef41b597dc3f3b'
-         'fc3046377137003726a151ee27b142a2'
-         '27830ef79418e277b90c1c1fa933f876'
-         '4c154a126ec17b02c623e3d451e062d9')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-stable"
+  cd "${srcdir}/${pkgbase}-${pkgver}-stable"
 
   autoheader
   autoconf
@@ -39,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-stable"
+  cd "${srcdir}/${pkgbase}-${pkgver}-stable"
 
   make prefix="${pkgdir}/usr" MAN_DEST="${pkgdir}/usr/share/man/man1" GROUP=42 \
     CONF_BASE="${pkgdir}/etc/privoxy" VAR_DEST="${pkgdir}/var" install
