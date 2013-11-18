@@ -12,17 +12,17 @@ options=('!libtool' '!staticlibs')
 source=(http://serf.googlecode.com/files/${PACKAGE_BASE}-${PACKAGE_VERSION}.tar.bz2)
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   scons PREFIX=/usr
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   scons check
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   install -d "${pkgdir}/usr"
   scons PREFIX="${pkgdir}/usr" install
 }
