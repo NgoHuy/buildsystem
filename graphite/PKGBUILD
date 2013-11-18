@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 188518 2013-06-15 07:02:08Z andyrtr $
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: AndyRTR <andyrtr@archlinux.org>
 
-pkgname=graphite
-pkgver=1.2.3
-pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
 url="http://projects.palaso.org/projects/graphitedev"
@@ -16,8 +13,6 @@ makedepends=('cmake' 'freetype2' 'python2')
 options=('!libtool' '!emptydirs')
 source=(http://downloads.sourceforge.net/project/silgraphite/graphite2/graphite2-${pkgver}.tgz
         graphite2-1.2.0-cmakepath.patch)
-md5sums=('7042305e4208af4c2d5249d814ccce58'
-         '00353b67941dbc30b76a43253760769e')
 
 build() {
   cd "${srcdir}"
@@ -58,6 +53,6 @@ package() {
   make DESTDIR="$pkgdir/" install 
 
   # licenses
-  mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -m644 "${srcdir}"/graphite2-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/
+  mkdir -p "${pkgdir}"/usr/share/licenses/${pkgbase}
+  install -m644 "${srcdir}"/graphite2-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgbase}/
 }
