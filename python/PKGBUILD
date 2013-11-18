@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 193926 2013-09-06 07:53:29Z bpiotrowski $
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Jason Chu <jason@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Original Contributor: Allan McRae <allan@archlinux.org>
+# Original Contributor: Jason Chu <jason@archlinux.org>
 
-pkgname=python
-pkgver=3.3.2
-pkgrel=2
 _pybasever=3.3
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
@@ -20,9 +17,6 @@ options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         python-3.3.2-CVE-2013-2099.patch
         python-3.3.2-CVE-2013-4238.patch)
-sha1sums=('87009d0c156c6e1354dfec5c98c328cae93950ad'
-          'bfe07759daacd4ffa0e682e65f0c9fb84f715c73'
-          'c30297201ef5cd803b685085ca6defb7ca66d2cd')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -82,5 +76,5 @@ package() {
   sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m/Makefile"
 
   # License
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
