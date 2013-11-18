@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 137725 2011-09-10 14:18:12Z pierre $
-# Maintainer: Tom K <tomk@runbox.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tom K <tomk@runbox.com>
 
-pkgname=gnu-netcat
-pkgver=0.7.1
-pkgrel=4
 pkgdesc="GNU rewrite of netcat, the network piping application"
 depends=('glibc' 'texinfo')
 arch=('i686' 'x86_64')
@@ -13,7 +10,6 @@ replaces=('netcat')
 provides=('netcat')
 install=gnu-netcat.install
 source=("http://downloads.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2")
-md5sums=('0a29eff1736ddb5effd0b1ec1f6fe0ef')
 
 build() {
   cd "${srcdir}/netcat-${pkgver}"
