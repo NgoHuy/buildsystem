@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 191564 2013-07-25 16:15:16Z heftig $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=(harfbuzz)
-pkgname=(harfbuzz harfbuzz-icu)
-pkgver=0.9.19
-pkgrel=1
 pkgdesc="OpenType text shaping engine"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -12,7 +9,6 @@ license=(MIT)
 makedepends=(glib2 freetype2 graphite cairo icu)
 options=(!libtool)
 source=(http://www.freedesktop.org/software/harfbuzz/release/${pkgbase}-${pkgver}.tar.bz2)
-sha256sums=('d2da0f060d47f6ad9de8c8781bb21fa4b9eae8ea1cd1e956b814095baa002f35')
 
 build() {
   cd $pkgbase-$pkgver
