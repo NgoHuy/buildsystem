@@ -1,12 +1,10 @@
-# $Id: PKGBUILD 182718 2013-04-13 10:58:55Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Original Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8
-pkgver=3.8.7
-pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,12 +17,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-md5sums=('1c738edfc54e7c65faeb90c436104e2f'
-         'd166692330220c425d69db82c9d693b6'
-         '838191b72463b4146bc981b602423311'
-         '0bebd8b31487488bd75fe5a1892d0db8'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         'f3def2cefdcbb954c21d8505d23cc83c')
 
 _kernelname=${pkgbase#linux}
 
@@ -312,8 +304,7 @@ _package-docs() {
   rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
+for _p in ${pkgbase[@]}; do
   eval "package_${_p}() {
     _package${_p#${pkgbase}}
   }"
