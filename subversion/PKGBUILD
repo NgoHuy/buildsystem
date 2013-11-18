@@ -24,13 +24,13 @@ source=(http://www.apache.org/dist/subversion/subversion-${PACKAGE_VERSION}.tar.
         subversion.rpath.fix.patch)
 
 prepare() {
-   cd ${pkgname}-${pkgver}
+   cd ${pkgbase}-${pkgver}
    patch -Np0 -i ../subversion.rpath.fix.patch
    sed -i 's|/usr/bin/env python|/usr/bin/env python2|' tools/hook-scripts/{,mailer/{,tests/}}*.py
 }
 
 build() {
-   cd ${pkgname}-${pkgver}
+   cd ${pkgbase}-${pkgver}
    export PYTHON=/usr/bin/python2
    # NOTE: if you are using rvm, this will really help.
    export RUBY=/usr/bin/ruby
@@ -59,14 +59,14 @@ build() {
 # FIXME: add FIXME entries so we will take a look at this in the future.
 # FIXME: -- Anh K. Huynh 2013 Sep 25th
 # check() {
-#    cd ${pkgname}-${pkgver}
+#    cd ${pkgbase}-${pkgver}
 #    export LANG=C LC_ALL=C
 #    #make check check-swig-pl check-swig-py check-swig-rb CLEANUP=yes # check-javahl
 #    make check CLEANUP=yes
 # }
 
 package() {
-   cd ${pkgname}-${pkgver}
+   cd ${pkgbase}-${pkgver}
 
    export LD_LIBRARY_PATH="${pkgdir}"/usr/lib:${LD_LIBRARY_PATH}
    make DESTDIR="${pkgdir}" INSTALLDIRS=vendor \
