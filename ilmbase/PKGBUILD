@@ -1,32 +1,28 @@
-# $Id: PKGBUILD 356 2008-04-18 22:56:27Z aaron $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=ilmbase
-pkgver=2.0.1
-pkgrel=1
 depends=('gcc-libs')
 pkgdesc="Base libraries from ILM for OpenEXR"
 arch=(i686 x86_64)
 url="http://www.openexr.com"
 license=('custom')
 options=('!libtool')
-source=(http://download.savannah.nongnu.org/releases/openexr/$pkgname-$pkgver.tar.gz) 
+source=(http://download.savannah.nongnu.org/releases/openexr/$pkgbase-$pkgver.tar.gz) 
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgbase-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgbase-$pkgver"
   # one of the tests fails randomly for an unknown reason
   make check || true
 }
 
 package() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgbase-$pkgver"
   make DESTDIR="${pkgdir}" install
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
 }
-md5sums=('74c0d0d2873960bd0dc1993f8e03f0ae')
