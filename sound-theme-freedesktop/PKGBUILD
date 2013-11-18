@@ -1,26 +1,22 @@
-# $Id: PKGBUILD 167224 2012-09-28 19:44:13Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=sound-theme-freedesktop
-pkgver=0.8
-pkgrel=1
 pkgdesc="Freedesktop sound theme"
 arch=(any)
 license=('custom')
 makedepends=('intltool')
-source=(http://people.freedesktop.org/~mccann/dist/${pkgname}-${pkgver}.tar.bz2)
+source=(http://people.freedesktop.org/~mccann/dist/${pkgbase}-${pkgver}.tar.bz2)
 url="http://freedesktop.org/wiki/Specifications/sound-theme-spec"
-md5sums=('d7387912cfd275282d1ec94483cb2f62')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/CREDITS" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/CREDITS" \
+    "${pkgdir}/usr/share/licenses/${pkgbase}/CREDITS"
 }
