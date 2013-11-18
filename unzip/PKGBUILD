@@ -12,7 +12,7 @@ depends=('bzip2' 'bash')
 source=("http://downloads.sourceforge.net/infozip/unzip${pkgver//.}.tar.gz")
 
 build() {
-  cd ${srcdir}/${pkgname}${pkgver//.}
+  cd ${srcdir}/${pkgbase}${pkgver//.}
 
   # set CFLAGS -- from Debian
   export CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=64 -DACORN_FTYPE_NFS \
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}${pkgver//.}
+  cd ${srcdir}/${pkgbase}${pkgver//.}
 
   # install -- from Debian
   make -f unix/Makefile prefix=${pkgdir}/usr INSTALL_PROGRAM="install" install
