@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 179930 2013-03-12 15:32:51Z foutrelis $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Original Contributor: Judd Vinet <jvinet@zeroflux.org>
 
-pkgname=iproute2
-pkgver=3.8.0
-pkgrel=1
 pkgdesc="IP Routing Utilities"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -19,13 +16,11 @@ replaces=('iproute')
 options=('!makeflags')
 backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
 	'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
-source=(http://www.kernel.org/pub/linux/utils/net/$pkgname/$pkgname-$pkgver.tar.xz
+source=(http://www.kernel.org/pub/linux/utils/net/$pkgbase/$pkgbase-$pkgver.tar.xz
          iproute2-fhs.patch)
-sha1sums=('6d40dd2b91aad9ae084c99973dcdfdbf6fb353fc'
-          '35b8cf2dc94b73eccad427235c07596146cd6f6c')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
 
   # set correct fhs structure
   patch -Np1 -i "$srcdir/iproute2-fhs.patch"
@@ -36,7 +31,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
 
   make DESTDIR="$pkgdir" install
 
