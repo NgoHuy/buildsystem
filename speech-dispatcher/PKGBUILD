@@ -1,14 +1,11 @@
-# $Id: PKGBUILD 179644 2013-03-09 01:48:59Z eric $
-# Maintainer:
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Steve Holmes <steve.holmes88@gmail.com>
-# Contributor: Alexander Jenisch <nt@divzero.at>
-# Contributor: Chris Brannon <cmbrannon@cox.net>
-# Contributor: Andreas Messer <andi@bupfen.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer:
+# Original Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Steve Holmes <steve.holmes88@gmail.com>
+# Original Contributor: Alexander Jenisch <nt@divzero.at>
+# Original Contributor: Chris Brannon <cmbrannon@cox.net>
+# Original Contributor: Andreas Messer <andi@bupfen.de>
 
-pkgname=speech-dispatcher
-pkgver=0.8
-pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="High-level device independent layer for speech synthesis interface"
 url="http://www.freebsoft.org/speechd"
@@ -35,14 +32,12 @@ backup=(etc/speech-dispatcher/clients/gnome-speech.conf
 	etc/speech-dispatcher/modules/epos-generic.conf
 	etc/speech-dispatcher/modules/flite.conf
 	etc/speech-dispatcher/speechd.conf)
-install="${pkgname}.install"
-source=("http://www.freebsoft.org/pub/projects/speechd/$pkgname-$pkgver.tar.gz"
+install="${pkgbase}.install"
+source=("http://www.freebsoft.org/pub/projects/speechd/$pkgbase-$pkgver.tar.gz"
         'speech-dispatcherd.service')
-md5sums=('d88691a64c676122f996230c107c392f'
-         'd26f52e2e95a30eaa83560f0e63faca5')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -51,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 "${srcdir}"/speech-dispatcherd.service "${pkgdir}/usr/lib/systemd/system/speech-dispatcherd.service"
