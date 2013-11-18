@@ -1,28 +1,24 @@
-# $Id: PKGBUILD 151445 2012-02-26 10:59:41Z pierre $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Alexander Baldeck <alexander@archlinux.org>
 
-pkgname=printproto
-pkgver=1.0.5
-pkgrel=2
 pkgdesc="X11 print extension wire protocol"
 arch=('any')
 makedepends=('xorg-util-macros')
 license=('custom')
 url="http://xorg.freedesktop.org/"
-source=("${url}/releases/individual/proto/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('4ddb7781ebc2418d681a6f5e16d777aed56ea35e')
+source=("${url}/releases/individual/proto/${pkgbase}-${pkgver}.tar.bz2")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/"
 }
