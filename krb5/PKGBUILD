@@ -21,8 +21,8 @@ source=(http://web.mit.edu/kerberos/dist/${pkgbase}/${pkgver%.*}/${pkgbase}-${pk
 options=('!emptydirs')
 
 build() {
-   tar zxvf ${pkgname}-${pkgver}.tar.gz
-   cd "${srcdir}/${pkgname}-${pkgver}/src"
+   tar zxvf ${pkgbase}-${pkgver}.tar.gz
+   cd "${srcdir}/${pkgbase}-${pkgver}/src"
 
    # cf https://bugs.gentoo.org/show_bug.cgi?id=448778
    patch -Np2 -i "${srcdir}"/krb5-config_LDFLAGS.patch
@@ -50,11 +50,11 @@ build() {
 }
 
 package() {
-   cd "${srcdir}/${pkgname}-${pkgver}/src"
-   make DESTDIR="${pkgdir}" EXAMPLEDIR=/usr/share/doc/${pkgname}/examples install
+   cd "${srcdir}/${pkgbase}-${pkgver}/src"
+   make DESTDIR="${pkgdir}" EXAMPLEDIR=/usr/share/doc/${pkgbase}/examples install
 
    # Fix FS#29889
-   install -m 644 plugins/kdb/ldap/libkdb_ldap/kerberos.{ldif,schema} "${pkgdir}"/usr/share/doc/${pkgname}/examples
+   install -m 644 plugins/kdb/ldap/libkdb_ldap/kerberos.{ldif,schema} "${pkgdir}"/usr/share/doc/${pkgbase}/examples
 
    # Sample KDC config file
    install -dm 755 "${pkgdir}"/var/lib/krb5kdc
@@ -70,7 +70,7 @@ package() {
    install -dm 755 "${pkgdir}"/usr/share/aclocal
    install -m 644 util/ac_check_krb5.m4 "${pkgdir}"/usr/share/aclocal
 
-   install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/NOTICE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+   install -Dm644 "${srcdir}"/${pkgbase}-${pkgver}/NOTICE "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
 
    # systemd stuff
    install -dm 755 "${pkgdir}"/usr/lib/systemd/system
