@@ -1,19 +1,16 @@
-# $Id: PKGBUILD 152679 2012-03-08 13:27:59Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=dirmngr
-pkgver=1.1.0
-pkgrel=4
 pkgdesc="A daemon to handle CRL and certificate requests"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="ftp://ftp.gnupg.org/gcrypt/dirmngr"
 depends=('libgcrypt' 'libldap' 'libksba' 'libgpg-error' 'libassuan' 'pth')
-source=(ftp://ftp.gnupg.org/gcrypt/$pkgname/$pkgname-$pkgver.tar.bz2)
+source=(ftp://ftp.gnupg.org/gcrypt/$pkgbase/$pkgbase-$pkgver.tar.bz2)
 install=dirmngr.install
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   # FIX for https://bugzilla.redhat.com/565131
   # not sure how best to turn this into something more upstreamable
   # patch configure to try this combo first? -- Rex
@@ -24,7 +21,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install
 }
-md5sums=('f2570f0248f5947daac200e85291b328')
