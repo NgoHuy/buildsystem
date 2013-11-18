@@ -19,7 +19,7 @@ source=(
 )
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   ./configure \
     --prefix=/usr \
     --with-terminfo=/usr/share/terminfo \
@@ -52,7 +52,7 @@ build() {
 }
 
 package() {
-  pushd $pkgname-$pkgver
+  pushd $pkgbase-$pkgver
   # workaround terminfo installation
   export TERMINFO="$pkgdir/usr/share/terminfo"
   install -d "$TERMINFO"
