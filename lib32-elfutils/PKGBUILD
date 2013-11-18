@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 97443 2013-09-20 08:52:27Z lcarlier $
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Original Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 
 _pkgbasename=elfutils
-pkgname=lib32-elfutils
-pkgver=0.156
-pkgrel=1
 pkgdesc="Collection of libraries for working with ELF object files and DWARF debugging information (32-bit)"
 arch=('x86_64')
 url="https://fedorahosted.org/elfutils/"
@@ -13,7 +10,6 @@ license=('LGPL3' 'GPL' 'GPL3')
 depends=('lib32-bzip2' 'lib32-zlib' 'elfutils')
 makedepends=('gcc-multilib')
 source=(https://fedorahosted.org/releases/e/l/elfutils/${pkgver}/elfutils-${pkgver}.tar.bz2)
-sha1sums=('48b30828eb0fb47787e45d80db05c05bbe0eaa76')
 
 build() {
   cd ${srcdir}/${_pkgbasename}-${pkgver}
