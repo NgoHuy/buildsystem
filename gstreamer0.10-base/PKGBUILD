@@ -1,17 +1,13 @@
-# $Id: PKGBUILD 185704 2013-05-17 12:40:26Z foutrelis $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=('gstreamer0.10-base')
-pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
-pkgver=0.10.36
-pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('pkgconfig' 'gstreamer0.10>=0.10.35' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection')
 options=(!libtool !emptydirs)
 url="http://gstreamer.freedesktop.org/"
 source=(${url}/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz)
-sha256sums=('1fe45c3894903001d4d008b0713dab089f53726dcb5842d5b40c2595a984e64a')
 
 build() {
   cd "${srcdir}/gst-plugins-base-${pkgver}"
