@@ -1,22 +1,19 @@
-# $Id: PKGBUILD 189673 2013-07-04 11:47:06Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Christian Hesse <mail@eworm.de>
-# Contributor: Marco A Rojas <marquicus at gmail dot com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Original Contributor: Christian Hesse <mail@eworm.de>
+# Original Contributor: Marco A Rojas <marquicus at gmail dot com>
 
-pkgname=ldb
-pkgver=1.1.16
-pkgrel=1
 pkgdesc="A schema-less, ldap like, API and database"
 arch=('i686' 'x86_64')
 url="http://ldb.samba.org/"
-source=(http://samba.org/ftp/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+source=(http://samba.org/ftp/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
 license=('GPL3')
 depends=('talloc' 'tevent' 'tdb' 'popt')
 makedepends=('python2')
 optdepends=('python2: for python bindings')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	# change to use python2
 	sed -i -e "s|/usr/bin/env python$|/usr/bin/env python2|" buildtools/bin/waf
@@ -33,8 +30,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	make DESTDIR=${pkgdir}/ install
 }
-md5sums=('60865c0b5704469ee2e59703087c8ec8')
