@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 180796 2013-03-26 11:32:30Z jgc $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=gnome-icon-theme
-pkgver=3.8.0
-pkgrel=1
 pkgdesc="GNOME icon theme"
 arch=(any)
 depends=('hicolor-icon-theme' 'icon-naming-utils' 'gtk-update-icon-cache' 'gnome-icon-theme-symbolic')
@@ -13,17 +10,16 @@ license=('GPL')
 groups=('gnome')
 install=gnome-icon-theme.install
 options=('!emptydirs')
-source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('e4f7c73e33eb8693e3adbab7df60fbb5f6dd147116ac04d9bd26986e41071270')
+source=(http://ftp.gnome.org/pub/gnome/sources/$pkgbase/${pkgver%.*}/$pkgbase-$pkgver.tar.xz)
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     make DESTDIR="$pkgdir" install
     rm -f  "${pkgdir}/usr/share/icons/gnome/icon-theme.cache"
 }
