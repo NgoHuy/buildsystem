@@ -12,7 +12,7 @@ changelog=${PACKAGE_BASE}.changelog
 source=(http://guichaz.free.fr/gliv/files/${PACKAGE_BASE}-${PACKAGE_VERSION}.tar.bz2)
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   ./configure --prefix=/usr --mandir=/usr/share/man
   sed -i \
       -e 's#pixmaps |#pixmaps $(datadir)/applications |#' \
@@ -22,6 +22,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
