@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 180966 2013-03-28 22:38:35Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=('gcc' 'gcc-libs' 'gcc-fortran' 'gcc-objc' 'gcc-ada' 'gcc-go')
-pkgver=4.8.0
-pkgrel=1
 #_snapshot=4.7-20120721
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
@@ -17,7 +14,6 @@ checkdepends=('dejagnu')
 options=('!libtool' '!emptydirs')
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2)
 	#ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-md5sums=('e6040024eb9e761c3bea348d1fa5abb0')
 
 
 if [ -n "${_snapshot}" ]; then
