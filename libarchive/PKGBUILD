@@ -10,7 +10,7 @@ source=("http://libarchive.org/downloads/$pkgbase-$pkgver.tar.gz"
         '0001-mtree-fix-line-filename-length-calculation.patch')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   # https://code.google.com/p/libarchive/issues/detail?id=301
   # upstream commit e65bf287f0133426b26611fe3e80b51267987106
@@ -21,13 +21,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   make check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/libarchive/COPYING
