@@ -1,21 +1,17 @@
-# $Id: PKGBUILD 188699 2013-06-18 09:42:45Z bisson $
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
-# Contributor: tobias <tobias@archlinux.org>
-# Contributor: Tobias Kieslich <tobias@justdreams.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Original Contributor: tobias <tobias@archlinux.org>
+# Original Contributor: Tobias Kieslich <tobias@justdreams.de>
 
-pkgname=dcraw
-pkgver=9.19
-pkgrel=1
 pkgdesc='Decodes any raw image from any digital camera'
 url='http://www.cybercom.net/~dcoffin/dcraw/'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('lcms' 'jasper')
-source=("http://www.cybercom.net/~dcoffin/dcraw/archive/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('83a85200b0f105a40d23e885f5108bc3b53bdbe4')
+source=("http://www.cybercom.net/~dcoffin/dcraw/archive/${pkgbase}-${pkgver}.tar.gz")
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgbase}"
 	gcc ${CFLAGS} ${LDFLAGS} \
 		-o dcraw dcraw.c \
 		-lm -ljasper -ljpeg -llcms \
@@ -23,7 +19,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgbase}"
 
 	install -Dm755 dcraw "${pkgdir}"/usr/bin/dcraw
 	install -Dm644 dcraw.1 "${pkgdir}"/usr/share/man/man1/dcraw.1
@@ -37,6 +33,6 @@ package() {
 		msgfmt -o "${pkgdir}"/usr/share/locale/$k/LC_MESSAGES/dcraw.mo $i
 	done
 
-	install -d "${pkgdir}"/usr/share/licenses/${pkgname}
-	head -25 dcraw.c > "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
+	install -d "${pkgdir}"/usr/share/licenses/${pkgbase}
+	head -25 dcraw.c > "${pkgdir}"/usr/share/licenses/${pkgbase}/license.txt
 }
