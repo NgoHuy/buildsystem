@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 95273 2013-08-08 17:06:34Z bluewind $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
 _pkgbasename=pixman
-pkgname=lib32-$_pkgbasename
-pkgver=0.30.2
-pkgrel=1
 pkgdesc="Pixman library (32-bit)"
 arch=('x86_64')
 url="http://xorg.freedesktop.org"
@@ -12,7 +9,6 @@ depends=('lib32-glibc' $_pkgbasename)
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=(http://xorg.freedesktop.org/releases/individual/lib/${_pkgbasename}-${pkgver}.tar.bz2)
-sha1sums=('4ea0832932fd5447a1d5768e0d5403b6c7c4dbaf')
 
 build() {
   export CC="gcc -m32"
@@ -29,5 +25,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/include
   mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase"
 }
