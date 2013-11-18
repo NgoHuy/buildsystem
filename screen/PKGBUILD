@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 170072 2012-10-31 18:06:22Z thomas $
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
 # Committer: dorphell <dorphell@gmx.net>
 
-pkgname=screen
-pkgver=4.0.3
-pkgrel=15
 _ptygroup=5 #the UID of our PTY/TTY group
 pkgdesc="Full-screen window manager that multiplexes a physical terminal"
 arch=('i686' 'x86_64')
@@ -18,13 +15,9 @@ source=(ftp://ftp.uni-erlangen.de/pub/utilities/screen/screen-${pkgver}.tar.gz
         screen-4.0.3-long-term.patch
         screen-4.0.3-caption-colors.patch
         screen.pam)
-md5sums=('8506fd205028a96c741e4037de6e3c42'
-         '2723c3e71d5a2e5a74b6ddbc5215ef0f'
-         '191b6ced695ce2ae3a65bf02c2d4220f'
-         '74f7919d7b65436cc2ea5341fa8ca374')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   patch -Np1 -i $srcdir/screen-4.0.3-long-term.patch
   patch -Np2 -i $srcdir/screen-4.0.3-caption-colors.patch
   
@@ -38,7 +31,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   make DESTDIR=${pkgdir} install
 
   install -Dm644 ${srcdir}/screen.pam ${pkgdir}/etc/pam.d/screen
