@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 88620 2013-04-20 17:17:05Z jlichtblau $
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Chris Brannon <cmbrannon@cox.net>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Original Contributor: Chris Brannon <cmbrannon@cox.net>
 
-pkgname=emacs-nox
-pkgver=24.3
-pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor, without X11 support"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -12,10 +9,9 @@ license=('GPL3')
 depends=('dbus-core' 'ncurses' 'perl')
 provides=('emacs')
 conflicts=('emacs')
-changelog=$pkgname.changelog
-install=$pkgname.install
+changelog=$pkgbase.changelog
+install=$pkgbase.install
 source=(ftp://ftp.gnu.org/gnu/emacs/emacs-${pkgver}.tar.gz)
-sha256sums=('0098ca3204813d69cd8412045ba33e8701fa2062f4bff56bedafc064979eef41')
 
 build() {
   cd ${srcdir}/emacs-$pkgver
