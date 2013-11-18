@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 185212 2013-05-12 07:52:15Z eric $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
 
-pkgname=quota-tools
-pkgver=4.01
-pkgrel=2
 epoch=1
 pkgdesc="Tools to manage kernel-level quotas in Linux"
 arch=('i686' 'x86_64')
@@ -13,19 +10,18 @@ depends=('e2fsprogs')
 backup=('etc/warnquota.conf' 'etc/quotatab' 'etc/quotagrpadmins')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/linuxquota/quota-${pkgver}.tar.gz)
-sha1sums=('64d2ab8b039cfea1aa4bd9e77e8c373488a7f0bf')
 
 build() {
-  cd ${pkgname}
+  cd ${pkgbase}
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgbase}
   make ROOTDIR="${pkgdir}" sbindir=/usr/bin root_sbindir=/usr/bin STRIP="" install
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  head -33 quota.c > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "${pkgdir}/usr/share/licenses/${pkgbase}"
+  head -33 quota.c > "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 
 # remove conflicts with glibc
   rm "${pkgdir}"/usr/include/rpcsvc/rquota.{h,x}
