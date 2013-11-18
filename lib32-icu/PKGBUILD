@@ -1,8 +1,5 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Original Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
-pkgname=lib32-icu
-pkgver=51.2
-pkgrel=1
 pkgdesc="International Components for Unicode library (32 bit)"
 arch=('x86_64')
 url="http://www.icu-project.org/"
@@ -11,8 +8,6 @@ depends=('lib32-gcc-libs' 'icu')
 makedepends=('gcc-multilib')
 source=(http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz
         'icu.8198.revert.icu5431.patch')
-md5sums=('072e501b87065f3a0ca888f1b5165709'
-         'ebd5470fc969c75e52baf4af94a9ee82')
 
 build() {
   export CC='gcc -m32'
@@ -45,6 +40,6 @@ package() {
   mv "${pkgdir}/usr/bin"/icu-config{,-32}
 
   install -d m644 "${pkgdir}/usr/share/licenses"
-  ln -s icu "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s icu "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
 
