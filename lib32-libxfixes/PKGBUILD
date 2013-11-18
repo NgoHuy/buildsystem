@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 91988 2013-05-30 18:02:27Z lcarlier $
-#Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+#Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
 _pkgbasename=libxfixes
-pkgname=lib32-$_pkgbasename
-pkgver=5.0.1
-pkgrel=1
 pkgdesc="X11 miscellaneous 'fixes' extension library (32-bit)"
 arch=('x86_64')
 url="http://xorg.freedesktop.org/"
@@ -13,7 +10,6 @@ depends=('lib32-libx11' $_pkgbasename)
 makedepends=('pkg-config' gcc-multilib )
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXfixes-${pkgver}.tar.bz2)
-sha256sums=('63bec085084fa3caaee5180490dd871f1eb2020ba9e9b39a30f93693ffc34767')
 
 build() {
   export CC="gcc -m32"
@@ -31,5 +27,5 @@ package() {
  
   rm -rf "${pkgdir}"/usr/{include,share,bin}
   mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase"
 }
