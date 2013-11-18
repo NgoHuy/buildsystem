@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 93399 2013-07-03 08:15:31Z lcarlier $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
 _pkgbasename=libxi
-pkgname=lib32-$_pkgbasename
-pkgver=1.7.2
-pkgrel=1
 pkgdesc="X11 Input extension library (32-bit)"
 arch=('x86_64')
 url="http://xorg.freedesktop.org"
@@ -13,7 +10,6 @@ makedepends=('pkgconfig' 'xorg-util-macros' gcc-multilib automake)
 options=(!libtool)
 license=('custom')
 source=(${url}/releases/individual/lib/libXi-${pkgver}.tar.bz2)
-sha256sums=('df24781dc63645e2b561cd0b20bd8a0e7aff02e426a8d2a7641159004d4cb20e')
 
 build() {
   export CC="gcc -m32"
@@ -35,5 +31,5 @@ package() {
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
   mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase"
 }
