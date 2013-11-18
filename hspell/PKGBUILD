@@ -1,21 +1,16 @@
-# $Id: PKGBUILD 165611 2012-08-27 09:42:15Z jgc $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=hspell
-pkgname=('hspell' 'hunspell-he')
-pkgver=1.2
-pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.ivrix.org.il/projects/spell-checker/"
 makedepends=('glibc' 'zlib' 'perl' 'hunspell' 'gawk')
 options=('!libtool' '!makeflags')
-source=(http://hspell.ivrix.org.il/${pkgname}-${pkgver}.tar.gz{,.sig})
-md5sums=('32fbc1a71e86ab46bf7870c6eec9a6be'
-         '858120037dd52ae823788518329ee7d3')
+source=(http://hspell.ivrix.org.il/${pkgbase}-${pkgver}.tar.gz{,.sig})
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr --mandir=/usr/share/man \
       --enable-linginfo --enable-fatverb --enable-shared
   make 
@@ -27,7 +22,7 @@ package_hspell() {
   pkgdesc="Hebrew spell-checker"
   depends=('glibc' 'zlib' 'perl')
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   rm -f ${pkgdir}/usr/lib/libhspell.a
