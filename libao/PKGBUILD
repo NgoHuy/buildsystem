@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 175810 2013-01-21 23:38:40Z bisson $
-# Contributor: dorphell <dorphell@archlinux.org>
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Contributor: dorphell <dorphell@archlinux.org>
+# Original Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
-pkgname=libao
-pkgver=1.1.0
-pkgrel=3
 pkgdesc='Cross-platform audio output library and plugins'
 url='http://xiph.org/ao/'
 arch=('i686' 'x86_64')
@@ -13,17 +10,15 @@ options=('!libtool')
 depends=('alsa-lib')
 makedepends=('libpulse')
 backup=('etc/libao.conf')
-source=("http://downloads.xiph.org/releases/ao/${pkgname}-${pkgver}.tar.gz"
+source=("http://downloads.xiph.org/releases/ao/${pkgbase}-${pkgver}.tar.gz"
         'libao.conf')
-sha1sums=('9301bc4886f170c7122ab62677fb71cf001c04fd'
-          '603f5e6715e7e50e1c8e8c1935c45a897c46e9af')
 
 conflicts=('libao-pulse')
 provides=("libao-pulse=${pkgver}-${pkgrel}")
 replaces=('libao-pulse')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	./configure \
 		--prefix=/usr \
@@ -33,7 +28,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 "${srcdir}"/libao.conf "${pkgdir}"/etc/libao.conf
 }
