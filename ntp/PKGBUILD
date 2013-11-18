@@ -23,7 +23,7 @@ source=("http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${_ntpbranch}/ntp-${_
 install=install
 
 build() {
-	cd "${srcdir}/${pkgname}-${_ntpver}"
+	cd "${srcdir}/${pkgbase}-${_ntpver}"
 
 	./configure \
 		--prefix=/usr \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${_ntpver}"
+	cd "${srcdir}/${pkgbase}-${_ntpver}"
 
 	make DESTDIR="${pkgdir}" install
 
@@ -44,7 +44,7 @@ package() {
 	install -Dm644 ../ntp.conf "${pkgdir}"/etc/ntp.conf
 	install -Dm644 ../ntpd.service "${pkgdir}"/usr/lib/systemd/system/ntpd.service
 	install -Dm644 ../ntpdate.service "${pkgdir}"/usr/lib/systemd/system/ntpdate.service
-	install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 
 	cd html
 	../scripts/html2man
@@ -53,5 +53,5 @@ package() {
 	mv "${pkgdir}/usr/share/man/man8/ntpd.8" "${pkgdir}/usr/share/man/man8/ntp-ntpd.8" # we should ditch openntpd
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/ntp-units.d"
-	echo 'ntpd.service' > "${pkgdir}/usr/lib/systemd/ntp-units.d/${pkgname}.list"
+	echo 'ntpd.service' > "${pkgdir}/usr/lib/systemd/ntp-units.d/${pkgbase}.list"
 }
