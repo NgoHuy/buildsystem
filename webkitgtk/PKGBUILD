@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194570 2013-09-18 17:13:59Z jgc $
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=webkitgtk
-pkgver=2.1.92
-pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=(i686 x86_64)
 url="http://webkitgtk.org/"
@@ -16,13 +13,12 @@ provides=("webkitgtk3=${pkgver}" "libwebkit3=${pkgver}")
 conflicts=(webkitgtk3 libwebkit3)
 replaces=(webkitgtk3 libwebkit3)
 options=(!libtool !emptydirs)
-source=(http://webkitgtk.org/releases/$pkgname-${pkgver}.tar.xz)
-sha256sums=('38ba86249bc5fc5c27bfc05405a1966737eecaf0ac7c7f93ce5fc0c0be8ee0ce')
+source=(http://webkitgtk.org/releases/$pkgbase-${pkgver}.tar.xz)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   ./configure --prefix=/usr \
-    --libexecdir=/usr/lib/$pkgname \
+    --libexecdir=/usr/lib/$pkgbase \
     --enable-introspection
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
@@ -32,7 +28,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make -j1 DESTDIR="$pkgdir" install
-  install -Dm644 Source/WebKit/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 Source/WebKit/LICENSE "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
