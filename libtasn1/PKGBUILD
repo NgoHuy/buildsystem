@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 183189 2013-04-18 16:15:37Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=libtasn1
-pkgver=3.3
-pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS"
 arch=('i686' 'x86_64')
 license=('GPL3' 'LGPL')
@@ -12,12 +9,10 @@ url="http://www.gnu.org/software/libtasn1/"
 depends=('glibc' 'texinfo')
 options=('!libtool')
 install=libtasn1.install
-source=(http://ftp.gnu.org/gnu/libtasn1/${pkgname}-${pkgver}.tar.gz{,.sig})
-md5sums=('2bdd687f487c50a0382b99553866a6e0'
-         'SKIP')
+source=(http://ftp.gnu.org/gnu/libtasn1/${pkgbase}-${pkgver}.tar.gz{,.sig})
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr \
       --with-packager=Archlinux \
       --with-packager-bug-reports="http://bugs.archlinux.org/" \
@@ -26,11 +21,11 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
