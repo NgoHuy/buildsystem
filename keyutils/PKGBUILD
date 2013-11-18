@@ -12,7 +12,7 @@ source=( \
   http://people.redhat.com/~dhowells/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2)
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   # Fix paths of binaries in /etc/request-key.conf.
   # The purpose is to replace `/bin/foobar` by `/usr/bin/foobar`.
   # I wonder when Redhat guys can support this in their own source
@@ -20,12 +20,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" LIBDIR="/usr/lib" USRLIBDIR="/usr/lib"  install
   # add nfsidmap to config file #30396
   echo "# NFS idmap resolver" >> $pkgdir/etc/request-key.conf
