@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 185214 2013-05-12 08:15:03Z eric $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
 
-pkgname=gpm
-pkgver=1.20.7
-pkgrel=3
 pkgdesc="A mouse server for the console and xterm"
 arch=('i686' 'x86_64')
 url="http://www.nico.schottelius.org/software/gpm/"
@@ -11,21 +8,18 @@ license=('GPL')
 depends=('bash')
 options=('!makeflags')
 install=gpm.install
-source=(http://www.nico.schottelius.org/software/gpm/archives/${pkgname}-${pkgver}.tar.lzma \
+source=(http://www.nico.schottelius.org/software/gpm/archives/${pkgbase}-${pkgver}.tar.lzma \
         gpm.sh gpm.service)
-sha1sums=('8d9f3655c80ce7667d31ede2a100b44986480369'
-          '88fe5ff10916c68a87abc8418a56eb0073f69fa9'
-          'f9bde96eb9c78da9f225bcf40822647f6592cf23')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -D -m755 ../gpm.sh "${pkgdir}/etc/profile.d/gpm.sh"
   install -D -m644 ../gpm.service "${pkgdir}/usr/lib/systemd/system/gpm.service"
