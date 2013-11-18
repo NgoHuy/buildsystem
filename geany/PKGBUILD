@@ -1,13 +1,10 @@
-# $Id: PKGBUILD 85995 2013-03-10 21:31:39Z arodseth $
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Angel Velasquez <angvp@archlinux.org> 
-# Contributor: Ionut Biru  <ibiru@archlinux.ro>
-# Contributor: William Rea <sillywilly@gmail.com>
-# Contributor: Allan McRae <mcrae_allan@hotmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Original Contributor: Angel Velasquez <angvp@archlinux.org> 
+# Original Contributor: Ionut Biru  <ibiru@archlinux.ro>
+# Original Contributor: William Rea <sillywilly@gmail.com>
+# Original Contributor: Allan McRae <mcrae_allan@hotmail.com>
 
-pkgname=geany
-pkgver=1.23
-pkgrel=1
 pkgdesc='Fast and lightweight IDE'
 arch=('x86_64' 'i686')
 url="http://www.geany.org/"
@@ -17,13 +14,12 @@ makedepends=('perlxml' 'setconf' 'intltool')
 optdepends=('vte: for terminal support'
             'geany-plugins: various extra features'
             'python2')
-install="$pkgname.install"
+install="$pkgbase.install"
 options=('!libtool')
-source=("http://download.geany.org/$pkgname-$pkgver.tar.bz2")
-sha256sums=('cdd4a772694803c837ae59e56f7bdc2faba174509317211f522e7d25dfcbe8b0')
+source=("http://download.geany.org/$pkgbase-$pkgver.tar.bz2")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   ./configure --prefix=/usr
   make
@@ -39,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
