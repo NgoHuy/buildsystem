@@ -28,7 +28,7 @@ source=("http://git-core.googlecode.com/files/git-$pkgver.tar.gz"
 
 build() {
   export PYTHON_PATH='/usr/bin/python2'
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   make prefix=/usr gitexecdir=/usr/lib/git-core \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
     USE_LIBPCRE=1 \
@@ -43,7 +43,7 @@ build() {
 
 check() {
   export PYTHON_PATH='/usr/bin/python2'
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   local jobs
   jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*')
   mkdir -p /dev/shm/git-test
@@ -63,7 +63,7 @@ check() {
 
 package() {
   export PYTHON_PATH='/usr/bin/python2'
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   make prefix=/usr gitexecdir=/usr/lib/git-core \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
     USE_LIBPCRE=1 \
