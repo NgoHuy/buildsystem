@@ -1,22 +1,18 @@
-# $Id: PKGBUILD 176938 2013-02-02 19:48:45Z eric $
-# Maintainer:
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Paul Mattal <paul@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer:
+# Original Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Paul Mattal <paul@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=ncftp
-pkgver=3.2.5
-pkgrel=2
 pkgdesc="A set of free application programs implementing FTP"
 url="http://www.ncftp.com/"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('ncurses')
-source=("ftp://ftp.ncftp.com/ncftp/$pkgname-$pkgver-src.tar.bz2")
-md5sums=('b05c7a6d5269c04891f02f43d4312b30')
+source=("ftp://ftp.ncftp.com/ncftp/$pkgbase-$pkgver-src.tar.bz2")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc
@@ -24,11 +20,11 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   install -d "${pkgdir}/usr/share"
   make prefix="${pkgdir}/usr" mandir="${pkgdir}/usr/share/man" install
 
   # Install license
   install -Dm644 doc/LICENSE.txt \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
