@@ -14,7 +14,7 @@ makedepends=('libpcap')
 source=("http://www.nlnetlabs.nl/downloads/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgbase}-${pkgver}"
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgbase}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
