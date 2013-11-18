@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Maintainer: Angel Velasquez <angvp@archlinux.org> 
-# Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
-pkgname=lxtask
-pkgver=0.1.4
-pkgrel=3
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Angel Velasquez <angvp@archlinux.org> 
+# Original Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 pkgdesc="Task manager of the LXDE Desktop"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -11,16 +8,15 @@ url="http://lxde.org/"
 groups=('lxde')
 depends=('gtk2')
 makedepends=('pkgconfig' 'intltool')
-source=(http://downloads.sourceforge.net/sourceforge/lxde/${pkgname}-${pkgver}.tar.gz)
-md5sums=('c4ab47d03d41a88696d64d3f1e78cf7f')
+source=(http://downloads.sourceforge.net/sourceforge/lxde/${pkgbase}-${pkgver}.tar.gz)
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgbase-$pkgver"
 	autoreconf
 	./configure --sysconfdir=/etc --prefix=/usr
 	make
 }
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgbase-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
