@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 88729 2013-04-22 07:34:04Z lcarlier $
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Original Maintainer: Mikko Seppälä <t-r-a-y@mbnet.fi>
 
 _pkgbasename=atk
-pkgname=lib32-$_pkgbasename
-pkgver=2.8.0
-pkgrel=1
 pkgdesc="A library providing a set of interfaces for accessibility (32-bit)"
 arch=('x86_64')
 license=('LGPL')
@@ -14,7 +11,6 @@ makedepends=('gcc-multilib')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgbasename}/${pkgver%.*}/${_pkgbasename}-${pkgver}.tar.xz)
 url='http://www.gtk.org/'
-sha256sums=('b22519176226f3e07cf6d932b77852e6b6be4780977770704b32d0f4e0686df4')
 
 build() {
   export CC="gcc -m32"
