@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 145093 2011-12-16 20:06:23Z andyrtr $
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Original Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=unixodbc
-pkgver=2.3.1
-pkgrel=1
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -14,7 +11,6 @@ backup=('etc/odbc.ini' 'etc/odbcinst.ini')
 depends=('readline' 'libltdl')
 options=('!libtool')
 source=("http://www.unixodbc.org/unixODBC-$pkgver.tar.gz")
-md5sums=('86788d4006620fa1f171c13d07fdcaab')
 
 build() {
     cd ${srcdir}/unixODBC-${pkgver}
