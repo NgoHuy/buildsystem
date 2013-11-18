@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 193691 2013-08-28 00:41:13Z eric $
-# Maintainer: Dale Blount <dale@archlinux.org>
-# Contributor: Dale Blount <dale@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Dale Blount <dale@archlinux.org>
+# Original Contributor: Dale Blount <dale@archlinux.org>
 
-pkgname=perl-error
-pkgver=0.17021
-pkgrel=1
 pkgdesc="Perl/CPAN Error module - Error/exception handling in an OO-ish way"
 url="http://search.cpan.org/dist/Error/"
 arch=('any')
@@ -13,7 +10,6 @@ depends=('perl')
 checkdepends=('perl-test-pod' 'perl-test-pod-coverage')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Error-${pkgver}.tar.gz)
-sha1sums=('4ae7d68fbf2d64693773eab9dcd5a25a9775b2c3')
 
 build() {
   cd Error-${pkgver}
