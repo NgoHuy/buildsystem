@@ -1,16 +1,12 @@
-# $Id: PKGBUILD 191963 2013-08-02 06:49:16Z pierre $
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=run-parts
-pkgver=4.4
-pkgrel=1
 pkgdesc='run scripts or programs in a directory'
 arch=('i686' 'x86_64')
 url='http://packages.qa.debian.org/d/debianutils.html'
 license=('GPL')
 depends=('glibc')
 source=("ftp://ftp.archlinux.org/other/run-parts/debianutils_${pkgver}.tar.gz")
-sha256sums=('190850cdd6b5302e0a1ba1aaed1bc7074d67d3bd8d04c613f242f7145afa53a6')
 
 build() {
 	cd $srcdir/debianutils-$pkgver
