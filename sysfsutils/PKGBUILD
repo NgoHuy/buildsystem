@@ -13,18 +13,18 @@ source=(http://downloads.sourceforge.net/sourceforge/linux-diag/${pkgbase}-${pkg
 options=(!libtool)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
   rm "$pkgdir/usr/lib/libsysfs.a"
 }
