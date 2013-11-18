@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 194355 2013-09-14 12:15:35Z tomegun $
-# Maintainer: Tom Gundersen <teg@jklm.no>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: eric <eric@archlinux.org>
-# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tom Gundersen <teg@jklm.no>
+# Original Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Original Contributor: eric <eric@archlinux.org>
+# Original Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
-pkgname=raptor
-pkgver=2.0.10
-pkgrel=2
 pkgdesc="A C library that parses RDF/XML/N-Triples into RDF triples"
 arch=('i686' 'x86_64')
 url="http://librdf.org/raptor"
@@ -33,4 +30,3 @@ package() {
   cd "${srcdir}"/raptor2-${pkgver}
   make prefix="${pkgdir}"/usr install
 }
-md5sums=('d9b0314eb835551adb48af037dcfd46e')
