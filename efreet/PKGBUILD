@@ -1,21 +1,17 @@
-# $Id: PKGBUILD 193648 2013-08-26 17:39:26Z ronald $
-# Maintainer: Ronald van Haren <ronald@archlinux.org>
-# Contributor: Gustavo Sverzut Barbieri <barbieri@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald@archlinux.org>
+# Original Contributor: Gustavo Sverzut Barbieri <barbieri@gmail.com>
 
-pkgname=efreet
-pkgver=1.7.8
-pkgrel=1
 pkgdesc="FreeDesktop.Org specifications for e17"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('eina' 'ecore' 'e_dbus')
 options=('!libtool' '!emptydirs')
-source=(http://download.enlightenment.org/releases/$pkgname-$pkgver.tar.gz)
-sha1sums=('5981bf49149366b15618050af3a65d6cf145c827')
+source=(http://download.enlightenment.org/releases/$pkgbase-$pkgver.tar.gz)
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
 
   export CFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CFLAGS}"
   export CXXFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CXXFLAGS}"
@@ -32,12 +28,12 @@ build() {
 }
 
 package(){
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install
 
   # install license files
-  install -Dm644 $srcdir/$pkgname-$pkgver/COPYING \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 $srcdir/$pkgbase-$pkgver/COPYING \
+        $pkgdir/usr/share/licenses/$pkgbase/COPYING
 }
 
 
