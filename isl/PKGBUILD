@@ -1,30 +1,26 @@
-# $Id: PKGBUILD 173206 2012-12-13 04:34:32Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
 
-pkgname=isl
-pkgver=0.11.1
-pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints"
 arch=('i686' 'x86_64')
 url="http://www.kotnet.org/~skimo/isl/"
 license=('MIT')
 options=('!libtool')
-source=(http://www.kotnet.org/~skimo/isl/$pkgname-$pkgver.tar.bz2)
-md5sums=('bce1586384d8635a76d2f017fb067cd2')
+source=(http://www.kotnet.org/~skimo/isl/$pkgbase-$pkgver.tar.bz2)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   make -j1 DESTDIR="$pkgdir/" install
 
   install -dm755 $pkgdir/usr/share/gdb/auto-load/usr/lib/
