@@ -16,7 +16,7 @@ source=( \
   libwmf-0.2.8.4-useafterfree.patch)
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   patch -p1 -i "${srcdir}/libwmf-0.2.8.4-libpng-1.5.patch"
   patch -p1 -i "${srcdir}/libwmf-0.2.8.4-useafterfree.patch"
 }
@@ -27,7 +27,7 @@ build() {
   local _gs_fontmap="/usr/share/ghostscript/${_gs_version}/Resource/Init/Fontmap.GS"
   ls "$_gs_fontmap" >/dev/null
 
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   ./configure --prefix=/usr \
     --with-gsfontdir=/usr/share/fonts/Type1 \
     --with-fontdir=/usr/share/fonts/Type1 \
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
   #Remove fonts, these are in gsfonts
   rm -rf "${pkgdir}/usr/share/fonts"
