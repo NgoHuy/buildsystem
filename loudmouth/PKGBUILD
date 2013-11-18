@@ -18,7 +18,7 @@ source=(http://ftp.gnome.org/pub/gnome/sources/${pkgbase}/${pkgver%.*}/${pkgbase
         08-fix-ipv6-connect.patch)
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   patch -Np1 -i ../01-fix-sasl-md5-digest-uri.patch
   patch -Np1 -i ../03-drop-stanzas-on-fail.patch
   patch -Np1 -i ../04-use-pkg-config-for-gnutls.patch
@@ -30,12 +30,12 @@ prepare() {
   automake --add-missing
 }
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
