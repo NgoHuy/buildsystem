@@ -5,7 +5,6 @@
 # Original Maintainer: Ronald van Haren <ronald@archlinux.org>
 # Originall Contributor: Gustavo Sverzut Barbieri <barbieri@gmail.com>
 
-_pkgname=enlightenment
 pkgdesc="Enlightenment window manager DR17 (aka e17)"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -18,11 +17,11 @@ provides=('notification-daemon' 'e')
 backup=('etc/enlightenment/sysactions.conf')
 options=('!libtool' '!emptydirs')
 install=enlightenment17.install
-source=("http://download.enlightenment.org/releases/$_pkgname-$pkgver.tar.gz"
+source=("http://download.enlightenment.org/releases/$_pkgbase-$pkgver.tar.gz"
   'e-applications.menu' 'quickstart.patch' 'sysactions_systemd.patch')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgbase-$pkgver"
 
   export CFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CFLAGS}"
   export CXXFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CXXFLAGS}"
@@ -58,19 +57,19 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
+  cd $srcdir/$_pkgbase-$pkgver
 
   make DESTDIR=$pkgdir install
 
 # install license files
-  if [ -e $srcdir/$_pkgname-$_pkgver/COPYING ]; then
-    install -Dm644 $srcdir/$_pkgname-$_pkgver/COPYING \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING
+  if [ -e $srcdir/$_pkgbase-$_pkgver/COPYING ]; then
+    install -Dm644 $srcdir/$_pkgbase-$_pkgver/COPYING \
+        $pkgdir/usr/share/licenses/$pkgbase/COPYING
   fi
 
-  if [ -e $srcdir/$_pkgname-$_pkgver/COPYING-PLAIN ]; then
-    install -Dm644 $srcdir/$_pkgname-$_pkgver/COPYING-PLAIN \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING-PLAIN
+  if [ -e $srcdir/$_pkgbase-$_pkgver/COPYING-PLAIN ]; then
+    install -Dm644 $srcdir/$_pkgbase-$_pkgver/COPYING-PLAIN \
+        $pkgdir/usr/share/licenses/$pkgbase/COPYING-PLAIN
   fi
 
   # install a default applications.menu file (mostly copy from gnome-menus)
