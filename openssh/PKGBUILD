@@ -24,7 +24,7 @@ source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgbase}-${_pkgver
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd' 'etc/conf.d/sshd')
 
 build() {
-	cd "${srcdir}/${pkgname}-${_pkgver}"
+	cd "${srcdir}/${pkgbase}-${_pkgver}"
 
 	./configure \
 		--prefix=/usr \
@@ -45,7 +45,7 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/${pkgname}-${_pkgver}"
+	cd "${srcdir}/${pkgbase}-${_pkgver}"
 
 	make tests ||
 	grep $USER /etc/passwd | grep -q /bin/false
@@ -53,14 +53,14 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${_pkgver}"
+	cd "${srcdir}/${pkgbase}-${_pkgver}"
 
 	make DESTDIR="${pkgdir}" install
 
 	rm "${pkgdir}"/usr/share/man/man1/slogin.1
 	ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
 
-	install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+	install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENCE"
 
 	install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
 	install -Dm644 ../sshd@.service "${pkgdir}"/usr/lib/systemd/system/sshd@.service
