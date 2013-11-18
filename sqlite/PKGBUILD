@@ -1,14 +1,11 @@
-# $Id: PKGBUILD 194285 2013-09-13 07:06:32Z andyrtr $
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgbase="sqlite"
-pkgname=('sqlite' 'sqlite-tcl' 'sqlite-doc') 
 _amalgamationver=3080002
 _docver=${_amalgamationver}
 #_docver=3080001
-pkgver=3.8.0.2
-pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=('i686' 'x86_64')
 license=('custom:Public Domain')
@@ -19,9 +16,6 @@ source=( # tarball containing the amalgamation for SQLite >= 3.7.5 together with
 	http://www.sqlite.org/2013/sqlite-doc-${_docver}.zip
 	license.txt)
 options=('!libtool' '!emptydirs')
-sha1sums=('294c30e882a0d45877bce09afe72d08ccfc6b650'
-          '43e314880cee7c97c240131625f6442c2ca7b109'
-          'f34f6daa4ab3073d74e774aad21d66878cf26853')
 
 build() {
   export CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_SECURE_DELETE"
@@ -50,7 +44,7 @@ package_sqlite() {
   cd ${srcdir}/sqlite-autoconf-$_amalgamationver
   make DESTDIR=${pkgdir} install
   
-  # license - no linking required because pkgbase=pkgname
+  # license - no linking required because pkgbase=pkgbase
   install -D -m644 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgbase}/license.txt
 }
 
@@ -66,7 +60,7 @@ package_sqlite-tcl() {
   
   # link license
   install -m755 -d ${pkgdir}/usr/share/licenses
-  ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
 
 package_sqlite-doc() {
