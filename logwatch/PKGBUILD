@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 91495 2013-05-23 10:13:37Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Original Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=logwatch
-pkgver=7.4.0
-pkgrel=3
 arch=('any')
 pkgdesc="Logwatch is a customizable log analysis system."
 url="http://www.logwatch.org/"
@@ -16,11 +13,9 @@ backup=(etc/logwatch/conf/logwatch.conf
 	etc/logwatch/conf/override.conf)
 source=(http://downloads.sourceforge.net/project/logwatch/logwatch-$pkgver/logwatch-$pkgver.tar.gz
 	rsyslog-messages.patch)
-md5sums=('b776466fb0633b486a41cf5aafcd9d12'
-         'e7f543259ae4f9bb0f4f1ce0638f5800')
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgbase-$pkgver
 
 	(cd scripts/shared/ && patch -p6 applystddate <$srcdir/rsyslog-messages.patch)
 
@@ -76,6 +71,6 @@ package() {
 
 	install -m 0755 -d $pkgdir/var/cache/logwatch
 
-	install -m 0755 -d $pkgdir/usr/share/licenses/$pkgname/
-	install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
+	install -m 0755 -d $pkgdir/usr/share/licenses/$pkgbase/
+	install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgbase/
 }
