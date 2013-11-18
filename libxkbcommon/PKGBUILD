@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 188190 2013-06-12 13:52:17Z heftig $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Daniel Micay <danielmicay@gmail.com>
-# Contributor: Mladen Pejakovic <pejakm@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Original Contributor: Daniel Micay <danielmicay@gmail.com>
+# Original Contributor: Mladen Pejakovic <pejakm@gmail.com>
 
-pkgname=libxkbcommon
-pkgver=0.3.1
-pkgrel=1
 pkgdesc="Keyboard handling library using XKB data"
 arch=(i686 x86_64)
 url="http://xkbcommon.org/"
@@ -13,18 +10,17 @@ license=(custom)
 depends=(xkeyboard-config)
 makedepends=(doxygen xorg-util-macros)
 options=('!libtool')
-source=("http://xkbcommon.org/download/$pkgname-$pkgver.tar.xz")
-#source=("$pkgname-$pkgver::git://github.com/xkbcommon/$pkgname.git")
-md5sums=('7287ea51df79c0f80e92b970a30b95e9')
+source=("http://xkbcommon.org/download/$pkgbase-$pkgver.tar.xz")
+#source=("$pkgbase-$pkgver::git://github.com/xkbcommon/$pkgbase.git")
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   ./configure --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
