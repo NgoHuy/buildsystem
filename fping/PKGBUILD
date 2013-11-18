@@ -1,20 +1,16 @@
-# $Id: PKGBUILD 186275 2013-05-23 15:38:37Z giovanni $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=fping
-pkgver=3.5
-pkgrel=1
 pkgdesc="A utility to ping multiple hosts at once"
 arch=('i686' 'x86_64')
 url="http://www.fping.org/"
 license=('custom') 
 depends=('glibc')
-source=("http://www.fping.org/dist/${pkgname}-${pkgver}.tar.gz")
-md5sums=('2e17cb655aa4eb59b5a4a38a89e746ed')
+source=("http://www.fping.org/dist/${pkgbase}-${pkgver}.tar.gz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
@@ -25,11 +21,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="${pkgdir}" install
 
   # install license
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgbase/LICENSE"
   chmod 4555 ${pkgdir}/usr/bin/fping
 }
