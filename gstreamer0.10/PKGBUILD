@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 184010 2013-04-30 20:10:58Z jgc $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=gstreamer0.10
-pkgver=0.10.36
-pkgrel=2
 pkgdesc="GStreamer Multimedia Framework"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -14,8 +11,6 @@ makedepends=('intltool' 'pkgconfig' 'gtk-doc' 'gobject-introspection' 'git')
 options=('!libtool')
 source=("git://anongit.freedesktop.org/gstreamer-sdk/gstreamer#commit=ce96cff8e2bf1772dc330387fa98e94f187fc2ab"
         tests-remove-silly-test_fail_abstract_new-check.patch)
-sha256sums=('SKIP'
-            'd3d3f4f04453831fdb4244bfe174a38c4e6f9f4da5c8c9050dcfa1a6097aad52')
 
 build() {
   cd "${srcdir}/gstreamer"
