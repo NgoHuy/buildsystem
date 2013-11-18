@@ -14,12 +14,12 @@ options=('!makeflags' '!libtool' '!emptydirs')
 source=("http://download.savannah.gnu.org/releases/m17n/${pkgbase}-${pkgver}.tar.gz")
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 	./configure --prefix=/usr --enable-static=no
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
