@@ -1,16 +1,13 @@
-# Maintainer: Thomas Dziedzic <gostrc@gmail.com>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-# Contributor: tobias [ tobias at archlinux org ]
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Original Maintainer: Thomas Dziedzic <gostrc@gmail.com>
+# Original Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Original Contributor: tobias [ tobias at archlinux org ]
+# Original Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgbase=vim
-pkgname=('vim' 'gvim' 'vim-runtime')
 _topver=7.4
 _patchlevel=16
 __hgrev=d17ef148ada4
 _versiondir="vim${_topver//./}"
-pkgver=${_topver}.${_patchlevel}
-pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
@@ -20,11 +17,6 @@ source=("ftp://ftp.archlinux.org/other/vim/vim-${pkgver}.tar.xz"
         'vimrc'
         'archlinux.vim'
         'gvim.desktop')
-md5sums=('733cce44a08ea953ad0e1f9d574670e0'
-         'SKIP'
-         'b9d4dcb9d3ee2e151dc4be1e94934f6a'
-         '10353a61aadc3f276692d0e17db1478e'
-         'd90413bd21f400313a785bb4010120cd')
 
 # source PKGBUILD && mksource
 mksource() {
@@ -43,20 +35,20 @@ mksource() {
   fi
   popd
 
-  mv vim ${pkgname}-${pkgver}
-  find ${pkgname}-${pkgver} -depth -type d -name .hg -exec rm -rf {} \;
-  rm ${pkgname}-${pkgver}/{.hgignore,.hgtags}
-  tar -cJf ${pkgname}-${pkgver}.tar.xz ${pkgname}-${pkgver}/*
-  rm -r ${pkgname}-${pkgver}
+  mv vim ${pkgbase}-${pkgver}
+  find ${pkgbase}-${pkgver} -depth -type d -name .hg -exec rm -rf {} \;
+  rm ${pkgbase}-${pkgver}/{.hgignore,.hgtags}
+  tar -cJf ${pkgbase}-${pkgver}.tar.xz ${pkgbase}-${pkgver}/*
+  rm -r ${pkgbase}-${pkgver}
 
-  gpg --detach-sign ${pkgname}-${pkgver}.tar.xz
+  gpg --detach-sign ${pkgbase}-${pkgver}.tar.xz
 
-  scp ${pkgname}-${pkgver}.tar.xz nym:/srv/ftp/other/vim/
-  scp ${pkgname}-${pkgver}.tar.xz.sig nym:/srv/ftp/other/vim/
+  scp ${pkgbase}-${pkgver}.tar.xz nym:/srv/ftp/other/vim/
+  scp ${pkgbase}-${pkgver}.tar.xz.sig nym:/srv/ftp/other/vim/
 }
 
 build() {
-  cp -a ${pkgname}-${pkgver} vim-build
+  cp -a ${pkgbase}-${pkgver} vim-build
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' \
@@ -149,7 +141,7 @@ package_vim() {
 
   # license
   install -Dm644 "${srcdir}"/vim-${pkgver}/runtime/doc/uganda.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
+    "${pkgdir}"/usr/share/licenses/${pkgbase}/license.txt
 }
 
 package_gvim() {
@@ -183,7 +175,7 @@ package_gvim() {
 
   # license
    install -Dm644 "${srcdir}"/vim-${pkgver}/runtime/doc/uganda.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
+    "${pkgdir}"/usr/share/licenses/${pkgbase}/license.txt
 }
 
 package_vim-runtime() {
