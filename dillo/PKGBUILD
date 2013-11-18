@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 89451 2013-04-29 13:16:04Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: dorphell <dorphell@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Original Maintainer: dorphell <dorphell@archlinux.org>
 
-pkgname=dillo
-pkgver=3.0.3
-pkgrel=2
 pkgdesc="A small, fast graphical web browser built on FLTK"
 arch=(i686 x86_64)
 url="http://www.dillo.org"
@@ -12,17 +9,16 @@ license=('GPL')
 depends=('fltk' 'libjpeg' 'perl' 'openssl' 'libpng' 'gcc-libs' 'libxcursor'
          'libxi' 'libxinerama')
 backup=(etc/dillo/{dillorc,dpidrc})
-source=(http://www.dillo.org/download/$pkgname-$pkgver.tar.bz2)
-md5sums=('726cd0b7a18c5e25f4d80ebeffe7607e')
+source=(http://www.dillo.org/download/$pkgbase-$pkgver.tar.bz2)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   ./configure --prefix=/usr --sysconfdir=/etc --enable-cookies --enable-dlgui \
               --enable-ssl
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
 }
