@@ -5,9 +5,6 @@
 # Original Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Original Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgname=iptables
-pkgver=1.4.18
-pkgrel=2
 pkgdesc='Linux kernel packet control tool'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -15,7 +12,7 @@ url='http://www.netfilter.org/projects/iptables/index.html'
 depends=('glibc' 'bash')
 makedepends=('linux-api-headers' 'chrpath')
 options=('!libtool')
-source=("http://www.netfilter.org/projects/iptables/files/${pkgname}-${pkgver}.tar.bz2"
+source=("http://www.netfilter.org/projects/iptables/files/${pkgbase}-${pkgver}.tar.bz2"
         empty.rules
         simple_firewall.rules
         iptables.conf.d
@@ -30,10 +27,9 @@ source=("http://www.netfilter.org/projects/iptables/files/${pkgname}-${pkgver}.t
         iptables-flush
         iptables-apply)
 backup=(etc/conf.d/iptables)
-sha1sums=()
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   # use system one
   rm include/linux/types.h
@@ -48,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
