@@ -5,11 +5,8 @@
 # Original Maintainer: Allan McRae <allan@archlinux.org>
 # Original Contributor: Aaron Griffin <aaron@archlinux.org>
 
-pkgname=bash
 _basever=4.2
 _patchlevel=045 #prepare for some patches
-pkgver=$_basever.$_patchlevel
-pkgrel=1
 pkgdesc="The GNU Bourne Again shell"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -32,7 +29,7 @@ if [ $_patchlevel -gt 000 ]; then
 fi
 
 build() {
-  cd ${srcdir}/${pkgname}-$_basever
+  cd ${srcdir}/${pkgbase}-$_basever
   for (( p=1; p<=$((10#${_patchlevel})); p++ )); do
     msg "applying patch bash${_basever//./}-$(printf "%03d" $p)"
     patch -Np0 -i $srcdir/bash${_basever//./}-$(printf "%03d" $p)
@@ -50,12 +47,12 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/${pkgname}-$_basever
+  cd ${srcdir}/${pkgbase}-$_basever
   make check
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-$_basever
+  cd ${srcdir}/${pkgbase}-$_basever
   make DESTDIR=${pkgdir} install
 
   # put needed symlinks in /bin
@@ -75,4 +72,3 @@ package() {
   install -m644 ${srcdir}/dot.bash_logout ${pkgdir}/etc/skel/.bash_logout
 }
 
-md5sums=()
