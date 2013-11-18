@@ -1,13 +1,9 @@
-# $Id: PKGBUILD 84338 2013-02-16 20:37:42Z pierre $
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgbasename=openssl
-pkgname=lib32-$_pkgbasename
 _ver=1.0.1e
 # use a pacman compatible version scheme
-pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-#pkgver=$_ver
-pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (32-bit)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -20,10 +16,6 @@ source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
         'ca-dir.patch')
-md5sums=('66bf6f10f060d561929de96f9dfe5b8c'
-         'e18847df48d39416f4ca5064887a2e28'
-         'dc78d3d06baffc16217519242ce92478'
-         '3bf51be3a1bbd262be46dc619f92aa90')
 
 build() {
 	export CC="gcc -m32"
@@ -67,5 +59,5 @@ package() {
 
 	rm -rf ${pkgdir}/{usr/{include,share,bin},etc}
 	mkdir -p $pkgdir/usr/share/licenses
-	ln -s $_pkgbasename $pkgdir/usr/share/licenses/$pkgname
+	ln -s $_pkgbasename $pkgdir/usr/share/licenses/$pkgbase
 }
