@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 194293 2013-09-13 07:22:31Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Original Contributor: Alexander Baldeck <alexander@archlinux.org>
 
-pkgname=libxrandr
-pkgver=1.4.2
-pkgrel=1
 pkgdesc="X11 RandR extension library"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,7 +11,6 @@ depends=('libxext' 'libxrender' 'randrproto>=1.4.0')
 makedepends=('xorg-util-macros')
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXrandr-${pkgver}.tar.bz2)
-sha256sums=('caa7b31ac769be51a532343c65376f1d4df3f307afaed58e34fb5e82e8b825ad')
 
 build() {
   cd "${srcdir}/libXrandr-${pkgver}"
@@ -26,6 +22,6 @@ package() {
   cd "${srcdir}/libXrandr-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/"
 }
