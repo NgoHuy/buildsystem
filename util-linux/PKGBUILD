@@ -3,9 +3,6 @@
 # Original Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Original Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=util-linux
-pkgver=2.23.2
-pkgrel=1
 pkgdesc="Miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -30,7 +27,7 @@ backup=(etc/pam.d/chfn
 install=util-linux.install
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   ./configure --prefix=/usr \
     --libdir=/usr/lib \
@@ -53,11 +50,11 @@ build() {
 
 #check() {
 # fails for some reason in chroot, works outside
-#  make -C "$pkgname-$pkgver" check
+#  make -C "$pkgbase-$pkgver" check
 #}
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   make DESTDIR="${pkgdir}" install
 
