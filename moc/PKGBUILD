@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 192414 2013-08-11 01:30:42Z eric $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
 
-pkgname=moc
-pkgver=2.5beta1
-pkgrel=5
 epoch=1
 pkgdesc="An ncurses console audio player designed to be powerful and easy to use"
 arch=('i686' 'x86_64')
@@ -21,33 +18,30 @@ optdepends=('speex: for using the speex plugin'
 options=('!libtool')
 source=(ftp://ftp.daper.net/pub/soft/moc/unstable/moc-2.5.0-beta1.tar.bz2{,.sig} \
         moc-ffmpeg.patch)
-sha1sums=('4030a1fa5c7cfef06909c54d8c7a1fbb93f23caa'
-          '29c232c37e1f3737c3b670372732446e9c0786a8'
-          'f3b8b327dd27d50422b1ad8c9ef89a7366529307')
 
 # source PKGBUILD && mksource
 mksource() {
   [[ -x /usr/bin/svn ]] || (echo "svn not found. Install subversion." && return 1)
   _svnver=2454
   _svntrunk="svn://daper.net/moc/trunk"
-  _svnmod="${pkgname}-${pkgver}"
-  mkdir ${pkgname}-${pkgver}
-  pushd ${pkgname}-${pkgver}
+  _svnmod="${pkgbase}-${pkgver}"
+  mkdir ${pkgbase}-${pkgver}
+  pushd ${pkgbase}-${pkgver}
   svn co ${_svntrunk} --config-dir ./ -r ${_svnver} ${_svnmod}
   find . -depth -type d -name .svn -exec rm -rf {} \;
-  tar -cJf ../${pkgname}-${pkgver}.tar.xz ${pkgname}-${pkgver}/*
+  tar -cJf ../${pkgbase}-${pkgver}.tar.xz ${pkgbase}-${pkgver}/*
   popd
-  rm -r ${pkgname}-${pkgver}
-  gpg --detach-sign --use-agent -u ${GPGKEY} ${pkgname}-${pkgver}.tar.xz
+  rm -r ${pkgbase}-${pkgver}
+  gpg --detach-sign --use-agent -u ${GPGKEY} ${pkgbase}-${pkgver}.tar.xz
 }
 
 prepare() {
-  cd ${pkgname}-2.5.0-beta1
+  cd ${pkgbase}-2.5.0-beta1
   patch -p0 -i "${srcdir}/moc-ffmpeg.patch"
 }
 
 build() {
-  cd ${pkgname}-2.5.0-beta1
+  cd ${pkgbase}-2.5.0-beta1
   ./configure --prefix=/usr --without-rcc \
     --with-oss --with-alsa --with-jack --with-aac --with-mp3 \
     --with-musepack --with-vorbis --with-flac --with-wavpack \
@@ -57,6 +51,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-2.5.0-beta1
+  cd ${pkgbase}-2.5.0-beta1
   make DESTDIR="${pkgdir}" install
 }
