@@ -1,13 +1,10 @@
-# $Id: PKGBUILD 193810 2013-09-02 08:57:44Z bpiotrowski $
-# Maintainer:  Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
-# Contributor: Paul Mattal <paul@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer:  Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Original Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Original Contributor: Ionut Biru <ibiru@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Original Contributor: Paul Mattal <paul@archlinux.org>
 
-pkgname=ffmpeg-compat
-pkgver=0.10.8
-pkgrel=4
 epoch=1
 pkgdesc='Complete and free Internet live audio and video broadcasting solution for Linux/Unix'
 arch=('i686' 'x86_64')
@@ -21,7 +18,6 @@ depends=(
       )
 makedepends=('libvdpau' 'yasm')
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2)
-sha256sums=('2e371088a71656be41b4ff70ae7e80a1d88c5149d6209013c9cce4b84278cbc8')
 
 build() {
   cd ffmpeg-$pkgver
@@ -70,7 +66,7 @@ package() {
   rm -rf "$pkgdir"/usr/{bin,share}
 
   install -dm755 "$pkgdir"/etc/ld.so.conf.d/
-  echo -e '/usr/lib/\n/usr/lib/ffmpeg-compat/' > "$pkgdir"/etc/ld.so.conf.d/$pkgname.conf
+  echo -e '/usr/lib/\n/usr/lib/ffmpeg-compat/' > "$pkgdir"/etc/ld.so.conf.d/$pkgbase.conf
 }
 
 # vim:set ts=2 sw=2 et:
