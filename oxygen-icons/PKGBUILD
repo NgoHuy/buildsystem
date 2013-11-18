@@ -1,25 +1,21 @@
-# $Id: PKGBUILD 194033 2013-09-10 12:51:41Z andrea $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=oxygen-icons
-pkgname=('oxygen-icons'
          'oxygen-icons-svg')
-pkgver=4.11.1
-pkgrel=1
 pkgdesc="The Oxygen Icon Theme"
 arch=('any')
 url='http://www.oxygen-icons.org/'
 license=('LGPL')
 makedepends=('cmake' 'automoc4')
-source=("http://download.kde.org/stable/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('3c80c53eec1cb14b309d068be66775d9d8d7d38d')
+source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.xz")
 
 build() {
 	cd $srcdir
 	mkdir build
 	cd build
-	cmake ../${pkgname}-${pkgver} \
+	cmake ../${pkgbase}-${pkgver} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DKDE4_BUILD_TESTS=OFF \
 		-DCMAKE_INSTALL_PREFIX=/usr
