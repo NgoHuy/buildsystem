@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 95253 2013-08-07 20:59:35Z bluewind $
-# Contributor: Alexander Fehr <pizzapunk gmail com>
-# Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Contributor: Alexander Fehr <pizzapunk gmail com>
+# Original Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=filezilla
-pkgver=3.7.3
-pkgrel=1
 pkgdesc="Fast and reliable FTP, FTPS and SFTP client"
 arch=('i686' 'x86_64')
 url="http://filezilla-project.org/"
@@ -14,7 +11,7 @@ install=filezilla.install
 source=("http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/${pkgver}/FileZilla_${pkgver}_src.tar.bz2")
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
    ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -27,8 +24,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 }
-md5sums=('df7828739a852ac3adbc1c010303115d')
