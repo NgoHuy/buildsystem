@@ -15,7 +15,7 @@ backup=('etc/mke2fs.conf')
 install=${pkgbase}.install
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   # Remove unnecessary init.d directory
   sed -i '/init\.d/s|^|#|' misc/Makefile.in
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install install-libs
 
   sed -i -e 's/^AWK=.*/AWK=awk/' "${pkgdir}/usr/bin/compile_et"
@@ -40,5 +40,5 @@ package() {
   # install MIT license
   # FIXME: Should we do this?
   install -Dm644 "${srcdir}/MIT-LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/MIT-LICENSE"
+    "${pkgdir}/usr/share/licenses/${pkgbase}/MIT-LICENSE"
 }
