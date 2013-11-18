@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194336 2013-09-13 20:35:43Z daniel $
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
-pkgname=windowmaker
-pkgver=0.95.5
-pkgrel=1
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Daniel Isenmann <daniel@archlinux.org>
+# Original Contributor: Judd Vinet <jvinet@zeroflux.org>
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=(i686 x86_64)
 url="http://www.windowmaker.org/"
@@ -13,9 +10,6 @@ options=('!libtool')
 source=(http://windowmaker.org/pub/source/release/WindowMaker-$pkgver.tar.gz
         wmaker.desktop
         wm-giflib.patch)
-md5sums=('19e9cc256ccb7075ff82f4b809df3a0a'
-         '2fba97bebfd691836b92b8f0db79ff13'
-         '05d8e98fb579f2fa5a097b629374e6b8')
 
 prepare() {
   cd WindowMaker-$pkgver
@@ -35,7 +29,7 @@ package() {
   cd WindowMaker-$pkgver
   
   make DESTDIR="$pkgdir" install
-  install -D -m644 COPYING.WTFPL "$pkgdir/usr/share/licenses/$pkgname/COPYING.WTFPL"
+  install -D -m644 COPYING.WTFPL "$pkgdir/usr/share/licenses/$pkgbase/COPYING.WTFPL"
   install -D -m644 ../wmaker.desktop "$pkgdir/usr/share/xsessions/wmaker.desktop"
 }
 
