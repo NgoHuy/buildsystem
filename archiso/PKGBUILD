@@ -1,18 +1,14 @@
-# $Id: PKGBUILD 197774 2013-10-30 00:06:14Z djgera $
-# Maintainer: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+# Original Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=archiso
-pkgver=13
-pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 license=('GPL')
 url='https://projects.archlinux.org/archiso.git/'
 depends=('make' 'arch-install-scripts' 'squashfs-tools' 'libisoburn' 'dosfstools' 'lynx')
-source=("ftp://ftp.archlinux.org/other/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('1f7655e91611dfc4e43b9c099129abdbbf92c708')
+source=("ftp://ftp.archlinux.org/other/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 
 package() {
-	make -C "${pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
+	make -C "${pkgbase}-${pkgver}" DESTDIR="${pkgdir}" install
 }
