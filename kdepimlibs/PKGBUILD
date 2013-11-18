@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 194033 2013-09-10 12:51:41Z andrea $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=kdepimlibs
-pkgver=4.11.1
-pkgrel=1
 pkgdesc="KDE PIM Libraries"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdepimlibs'
@@ -12,13 +9,12 @@ license=('GPL' 'LGPL')
 depends=('nepomuk-core' 'gpgme' 'akonadi' 'libical' 'prison' 'qjson')
 makedepends=('cmake' 'automoc4' 'boost' 'cyrus-sasl')
 install='kdepimlibs.install'
-source=("http://download.kde.org/stable/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('c08b2954504b91daea19685e1bad0a7f65a042ed')
+source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.xz")
 
 build() {
   mkdir build
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDE4_BUILD_TESTS=OFF \
     -DCMAKE_SKIP_RPATH=ON \
