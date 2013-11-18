@@ -1,17 +1,13 @@
-# $Id: PKGBUILD 189931 2013-07-11 19:03:53Z ioni $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
-# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Original Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgbase=mtr
-pkgname=(mtr mtr-gtk)
-pkgver=0.85
-pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('ncurses' 'gtk2')
 source=(ftp://ftp.bitwizard.nl/mtr/$pkgbase-$pkgver.tar.gz)
 url=""ba1e111d270178eb1d65e51ebf6503f
-md5sums=('aba1e111d270178eb1d65e51ebf6503f')
 
 build() {
     cp -r  $pkgbase-$pkgver $pkgbase-cli
