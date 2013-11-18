@@ -12,7 +12,7 @@ license=('APACHE')
 source=(http://www.apache.org/dist/apr/apr-${PACKAGE_VERSION}.tar.bz2)
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   ./configure --prefix=/usr --includedir=/usr/include/apr-1 \
     --with-installbuilddir=/usr/share/apr-1/build \
     --enable-nonportable-atomics \
@@ -23,11 +23,11 @@ build() {
 
 # FIXME: Failed test: testsockets.c
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make -j1 check
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
