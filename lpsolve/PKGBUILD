@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 51162 2009-09-05 13:45:34Z andyrtr $
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: AndyRTR <andyrtr@archlinux.org>
 
-pkgname=lpsolve
 _origname=lp_solve
-pkgver=5.5.2.0
 _mainver=5.5
-pkgrel=2
 pkgdesc="a Mixed Integer Linear Programming (MILP) solver"
 arch=('i686' 'x86_64')
 url="http://lpsolve.sourceforge.net/"
@@ -13,8 +10,6 @@ license=('GPL')
 depends=('glibc')
 source=(http://downloads.sourceforge.net/project/lpsolve/lpsolve/${pkgver}/lp_solve_${pkgver}_source.tar.gz
         cflags.patch)
-md5sums=('167c0fb4ab178e0b7ab50bf0a635a836'
-         '7403f745d06619f59f52800b655d8751')
 
 build() {
   cd "${srcdir}/${_origname}_${_mainver}"
