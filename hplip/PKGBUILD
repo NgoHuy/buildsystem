@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 194375 2013-09-15 08:00:33Z andyrtr $
-# Maintainer: Tom Gundersen <teg@jklm.no>
-# Contributor : Rémy Oudompheng <remy@archlinux.org>
-# Contributor: Morgan LEFIEUX <comete@archlinuxfr.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tom Gundersen <teg@jklm.no>
+# Original Contributor : Rémy Oudompheng <remy@archlinux.org>
+# Original Contributor: Morgan LEFIEUX <comete@archlinuxfr.org>
 
-pkgname=hplip
-pkgver=3.13.9
-pkgrel=2
 pkgdesc="Drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 arch=('i686' 'x86_64')
 url="http://hplipopensource.com"
@@ -25,14 +22,11 @@ optdepends=('cups: for printing support'
             'libusbx: for advanced usb support')
 options=('!libtool')
 install=hplip.install
-source=(http://downloads.sourceforge.net/${pkgname}/$pkgname-$pkgver.tar.gz{,.asc}
+source=(http://downloads.sourceforge.net/${pkgbase}/$pkgbase-$pkgver.tar.gz{,.asc}
         hp-mkuri.patch)
-md5sums=('8fcbbd0d3a0b76550f325bd6cf46d9d9'
-         'SKIP'
-         '0bd7779fdbc4d7a9386df04dce2cb8d4')
 
 build() {
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$srcdir/$pkgbase-$pkgver"
 
  # fix linking libnotify, FS#34283
  patch -Np0 -i ${srcdir}/hp-mkuri.patch
@@ -79,8 +73,8 @@ build() {
 }
 
 package() {
- #cd "$srcdir/$pkgname-$pkgver"
- cd "$srcdir/$pkgname-${pkgver/.a/a}"
+ #cd "$srcdir/$pkgbase-$pkgver"
+ cd "$srcdir/$pkgbase-${pkgver/.a/a}"
  make rulesdir=/usr/lib/udev/rules.d DESTDIR="$pkgdir/" install
  # remove config provided by sane and autostart of hp-daemon
  rm -rf "$pkgdir"/etc/{sane.d,xdg}
