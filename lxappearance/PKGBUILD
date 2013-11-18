@@ -1,11 +1,8 @@
-#$Id: PKGBUILD 96679 2013-09-03 01:45:43Z bgyorgy $
-# Maintainer: Bartłomiej Piotrowski <barthalion@gmail.com>
-# Contributor: Angel Velasquez <angvp@archlinux.org>  
-# Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
+#Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Bartłomiej Piotrowski <barthalion@gmail.com>
+# Original Contributor: Angel Velasquez <angvp@archlinux.org>  
+# Original Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
-pkgname=lxappearance
-pkgver=0.5.2
-pkgrel=2
 pkgdesc="Feature-rich GTK+ theme switcher of the LXDE Desktop"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -13,18 +10,17 @@ url="http://lxde.org/"
 groups=('lxde')
 depends=('gtk2')
 makedepends=('intltool')
-source=(http://downloads.sourceforge.net/sourceforge/lxde/${pkgname}-${pkgver}.tar.gz)
-md5sums=('a088c6ef08fd25df7dc3be5b07168bbe')
+source=(http://downloads.sourceforge.net/sourceforge/lxde/${pkgbase}-${pkgver}.tar.gz)
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgbase-$pkgver"
 
     ./configure --sysconfdir=/etc --prefix=/usr 
     make 
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgbase-$pkgver"
 
     make DESTDIR="$pkgdir" install 
 }
