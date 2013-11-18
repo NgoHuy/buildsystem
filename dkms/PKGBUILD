@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 90494 2013-05-12 22:57:28Z seblu $
-# Maintainer: Sébastien Luttringer
-# Contributor: Balwinder S "bsd" Dheeman (bdheeman AT gmail.com)
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sébastien Luttringer
+# Original Contributor: Balwinder S "bsd" Dheeman (bdheeman AT gmail.com)
 
-pkgname=dkms
-pkgver=2.2.0.3
-pkgrel=14
 pkgdesc='Dynamic Kernel Modules System'
 arch=('any')
 url='http://linux.dell.com/dkms/'
@@ -13,24 +10,18 @@ depends=('bash' 'kmod' 'gcc' 'make' 'patch')
 optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS Arch kernel')
 backup=('etc/dkms/framework.conf' 'etc/default/dkms')
-install=$pkgname.install
-source=("http://linux.dell.com/$pkgname/permalink/$pkgname-$pkgver.tar.gz"
-        "$pkgname.default"
-        "$pkgname.service"
-        "$pkgname.systemd"
+install=$pkgbase.install
+source=("http://linux.dell.com/$pkgbase/permalink/$pkgbase-$pkgver.tar.gz"
+        "$pkgbase.default"
+        "$pkgbase.service"
+        "$pkgbase.systemd"
         '01-broken-uninstall.patch'
         '02-no-kernel-hook.patch')
-md5sums=('11a8aaade2ebec2803653837c7593030'
-         '33be2fbf1bcc1b3fb2f38d9e7eaa809d'
-         '02e9744e3fdc3d2f68e46966fb32e260'
-         '267632312aa52a190ec0db0758920dd3'
-         '2dfd8656dc79afd229c1481a90fb645b'
-         '82d520c39c99c34977e48b313a189c6c')
 
 prepare() {
   # patch
   patches=("$srcdir"/*.patch)
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   for p in "${patches[@]}"; do
     msg2 "Apply patch: ${p##*/}"
     patch -p1 -i "$p"
@@ -46,11 +37,11 @@ prepare() {
 
 package() {
   # systemd
-  install -D -m 644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -D -m 755 $pkgname.systemd "$pkgdir/usr/lib/systemd/scripts/$pkgname"
-  install -D -m 644 $pkgname.default "$pkgdir/etc/default/$pkgname"
+  install -D -m 644 $pkgbase.service "$pkgdir/usr/lib/systemd/system/$pkgbase.service"
+  install -D -m 755 $pkgbase.systemd "$pkgdir/usr/lib/systemd/scripts/$pkgbase"
+  install -D -m 644 $pkgbase.default "$pkgdir/etc/default/$pkgbase"
   # upstream installer
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make \
     DESTDIR="$pkgdir" \
     SBIN="$pkgdir/usr/bin" \
