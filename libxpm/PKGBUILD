@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194291 2013-09-13 07:20:35Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=libxpm
-pkgver=3.5.11
-pkgrel=1
 pkgdesc="X11 pixmap library"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -12,7 +9,6 @@ depends=('libxt' 'libxext')
 makedepends=('xorg-util-macros')
 options=('!libtool')
 source=("${url}/releases/individual/lib/libXpm-${pkgver}.tar.bz2")
-sha256sums=('c5bdafa51d1ae30086fac01ab83be8d47fe117b238d3437f8e965434090e041c')
 
 build() {
   cd "${srcdir}/libXpm-${pkgver}"
@@ -24,6 +20,6 @@ package() {
   cd "${srcdir}/libXpm-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/"
 }
