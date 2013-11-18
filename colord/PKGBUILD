@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 191315 2013-07-23 14:05:05Z jgc $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Original Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=colord
-pkgver=1.0.2
-pkgrel=2
 pkgdesc="System daemon for managing color devices"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/software/colord"
@@ -15,31 +12,29 @@ optdepends=('sane: UseSANE support [/etc/colord.conf]')
 options=('!libtool')
 install=colord.install
 backup=(etc/colord.conf)
-source=($url/releases/$pkgname-$pkgver.tar.xz
+source=($url/releases/$pkgbase-$pkgver.tar.xz
         udev-systemd.patch)
-sha1sums=('081ce4457e9752c726e68820b1b079ab314093a0'
-          '3b467b9674f767c804943d191beaf6bd1ba3a606')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   patch -Np1 -i ../udev-systemd.patch
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   
   # put udev files in /usr/lib
   sed -i "/slashlibdir=/s#/lib#/usr/lib#" configure
   
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib/$pkgname --disable-static \
+    --libexecdir=/usr/lib/$pkgbase --disable-static \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --enable-vala --enable-sane --disable-volume-search
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
