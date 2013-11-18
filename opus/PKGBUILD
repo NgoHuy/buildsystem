@@ -1,34 +1,30 @@
-# $Id: PKGBUILD 190018 2013-07-12 21:29:41Z heftig $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
-# Contributor: pumbur
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Original Contributor: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
+# Original Contributor: pumbur
 
-pkgname=opus
-pkgver=1.0.3
-pkgrel=1
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet"
 arch=(i686 x86_64)
 url="http://www.opus-codec.org/"
 license=(BSD)
 depends=(glibc)
 options=('!libtool')
-source=(http://downloads.us.xiph.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('86eedbd3c5a0171d2437850435e6edff')
+source=(http://downloads.us.xiph.org/releases/$pkgbase/$pkgbase-$pkgver.tar.gz)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   ./configure --prefix=/usr --enable-custom-modes
   make
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
