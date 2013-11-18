@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 185967 2013-05-19 22:44:19Z foutrelis $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Sarah Hay <sarah@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Sarah Hay <sarah@archlinux.org>
 
-pkgname=gtk2-perl
-pkgver=1.247
-pkgrel=2
 pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -14,7 +11,6 @@ depends=('gtk2' 'pango-perl')
 checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gtk2-${pkgver}.tar.gz)
-md5sums=('b65b0293cce3ac3786c37a7fa508e506')
 
 build() {
   cd "${srcdir}/Gtk2-${pkgver}"
