@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 194637 2013-09-20 01:56:34Z eric $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgbase=imagemagick
-pkgname=('imagemagick' 'imagemagick-doc')
-pkgver=6.8.6.10
-pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
@@ -14,8 +11,6 @@ makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript' \
 #source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz \
 source=(ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz \
         perlmagick.rpath.patch)
-sha1sums=('807380b2221b5fed789bc895e8e4c3758237be9a'
-          'e143cf9d530fabf3b58023899b5cc544ba93daec')
 
 prepare() {
   cd ImageMagick-${pkgver%.*}-${pkgver##*.}
