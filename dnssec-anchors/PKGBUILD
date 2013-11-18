@@ -6,17 +6,12 @@
 # Original Contributor: m4xm4n <max@maxfierke.com>
 # Original Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
-pkgname=dnssec-anchors
-pkgver=20130320
-pkgrel=1
 pkgdesc='DNSSEC trust anchors for the root zone'
 url='http://data.iana.org/root-anchors/'
 license=('custom:NoCopyright')
 arch=('any')
 source=('LICENSE'
   'trusted-key.key')
-sha256sums=('dd37e92942d5a4024f1c77df49d61ca77fc6284691814903a741785df61f78cb'
-      'ca6388cc16223b29b607f07a9aa77e0aa52f653106d440cdc92cc40e145a4bb5')
 
 get_trusted-key() {
   drill -z -s DNSKEY . > root.key
@@ -37,5 +32,5 @@ get_trusted-key() {
 package() {
   cd "${srcdir}"
   install -Dm644 trusted-key.key "${pkgdir}"/etc/trusted-key.key
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
