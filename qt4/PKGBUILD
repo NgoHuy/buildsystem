@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 193904 2013-09-04 19:32:38Z andrea $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=qt4
-pkgver=4.8.5
-pkgrel=2
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -23,7 +20,7 @@ optdepends=('qtchooser: set the default Qt toolkit'
             'libxcursor: Xcursor support'
             'libxfixes: Xfixes support'
             'icu: Unicode support')
-install="${pkgname}.install"
+install="${pkgbase}.install"
 options=('!libtool')
 replaces=('qt<=4.8.4')
 conflicts=('qt')
@@ -33,15 +30,6 @@ source=("http://download.qt-project.org/official_releases/qt/4.8/${pkgver}/${_pk
         'linguist-qt4.desktop' 'qdbusviewer-qt4.desktop'
         'improve-cups-support.patch'
         'qtbug-31579.patch' 'qtbug-32534.patch')
-md5sums=('1864987bdbb2f58f8ae8b350dfdbe133'
-         'a16638f4781e56e7887ff8212a322ecc'
-         '8a28b3f52dbeb685d4b69440b520a3e1'
-         '9727c406c240990870c905696a8c5bd1'
-         '0e384663d3dd32abe35f5331c4147569'
-         'b859c5673e5098c39f72b2252947049e'
-         'c439c7731c25387352d8453ca7574971'
-         '6ed8d26a8e4a9bba1f6c08fb99cc8357'
-         'bb0e0fa6ba953fa590d81ac612374e11')
 
 prepare() {
   cd ${_pkgfqn}
@@ -135,7 +123,7 @@ package() {
 
     # install license addition
     install -D -m644 LGPL_EXCEPTION.txt \
-      ${pkgdir}/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
+      ${pkgdir}/usr/share/licenses/${pkgbase}/LGPL_EXCEPTION.txt
 
     # Fix wrong libs path in pkgconfig files
     find "${pkgdir}/usr/lib/pkgconfig" -type f -name '*.pc' \
