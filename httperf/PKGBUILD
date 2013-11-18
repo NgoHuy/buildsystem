@@ -1,27 +1,23 @@
-# $Id: PKGBUILD 83753 2013-02-05 01:20:08Z seblu $
-# Maintainer: Sébastien Luttringer
-# Contributor: Essien Ita Essien <me@essienitaessien.com>
-# Contributor: Peter Baldwin <bald_pete@hotmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sébastien Luttringer
+# Original Contributor: Essien Ita Essien <me@essienitaessien.com>
+# Original Contributor: Peter Baldwin <bald_pete@hotmail.com>
 
-pkgname=httperf
-pkgver=0.9.0
-pkgrel=5
 pkgdesc='A tool for measuring web server performance.'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='http://code.google.com/p/httperf'
 depends=('openssl')
-source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-md5sums=('2968c36b9ecf3d98fc1f2c1c9c0d9341')
+source=("http://$pkgbase.googlecode.com/files/$pkgbase-$pkgver.tar.gz")
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   ./configure --prefix=/usr 
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
