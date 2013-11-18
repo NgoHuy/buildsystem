@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 171539 2012-11-18 22:17:11Z thomas $
-# Maintainer: Thomas Bächler <thomas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 #
 # Create a new tarball from the linux-firmware git tree with the following command:
@@ -7,9 +7,6 @@
 # git archive --format=tar --prefix linux-firmware-$(date +%Y%m%d)/ master | xz -9 > linux-firmware-$(date +%Y%m%d).tar.xz
 #
 
-pkgname=linux-firmware
-pkgver=20121118
-pkgrel=1
 pkgdesc="Firmware files for Linux"
 arch=('any')
 url="http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -39,11 +36,10 @@ replaces=('kernel26-firmware'
            'rt2x00-rt61-fw'
            'rt2x00-rt71w-fw')
 options=(!strip)
-source=(ftp://ftp.archlinux.org/other/linux-firmware/$pkgname-$pkgver.tar.xz)
-sha256sums=('27f9a966c7e557dc072dc35ec01aff71d02e0389f25e19f04fdb8434accf4028')
+source=(ftp://ftp.archlinux.org/other/linux-firmware/$pkgbase-$pkgver.tar.xz)
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   install -d -m755 "${pkgdir}/usr/lib/firmware"
   cp -a * "${pkgdir}/usr/lib/firmware/"
