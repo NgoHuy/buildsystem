@@ -12,13 +12,13 @@ options=('!libtool' '!makeflags')
 source=("http://www.abisource.com/downloads/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/link-grammar/LICENSE"
 }
