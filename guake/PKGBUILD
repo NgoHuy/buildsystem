@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 77983 2012-10-16 02:10:28Z bgyorgy $
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
-# Contributor: Angel Velasquez <angvp@archlinux.org>
-# Contributor: Wilson Pinto Júnior (N3RD3X) <n3rd3x@linuxmail.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Original Contributor: Angel Velasquez <angvp@archlinux.org>
+# Original Contributor: Wilson Pinto Júnior (N3RD3X) <n3rd3x@linuxmail.org>
 
-pkgname=guake
-pkgver=0.4.4
-pkgrel=2
 pkgdesc='Drop-down terminal for GNOME'
 arch=('i686' 'x86_64')
 url="http://guake.org/"
@@ -13,14 +10,12 @@ license=('GPL')
 depends=('python2-notify' 'vte' 'python2-gconf' 'python2-dbus' 'python2-xdg' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('intltool')
 options=('!libtool')
-install=$pkgname.install
-source=(http://guake.org/files/$pkgname-$pkgver.tar.gz
+install=$pkgbase.install
+source=(http://guake.org/files/$pkgbase-$pkgver.tar.gz
         guake-fix-notification.patch)
-md5sums=('532adada29b8f0bb79dc15904aa6b70c'
-         '0b57227e6869dd84dd4fb0794ed0d082')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
   sed -i 's|schemadir = $(sysconfdir)/gconf/schemas|schemadir = $(GCONF_SCHEMA_FILE_DIR)|' data/Makefile.in
   sed -i 's|/usr/bin/env python|/usr/bin/python2|' src/{guake{,-prefs},prefs.py}
 
@@ -35,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
