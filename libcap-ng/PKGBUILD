@@ -1,28 +1,24 @@
-# $Id: PKGBUILD 171545 2012-11-19 03:42:33Z dan $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Original Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
-pkgname=libcap-ng
-pkgver=0.7.3
-pkgrel=1
 pkgdesc="A library making programming with POSIX capabilities easier than traditional libcap"
 arch=('i686' 'x86_64')
 url="http://people.redhat.com/sgrubb/libcap-ng/"
 license=('GPL2' 'LGPL2.1')
 depends=('glibc')
 options=('!libtool')
-source=(http://people.redhat.com/sgrubb/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('610afb774f80a8032b711281df126283')
+source=(http://people.redhat.com/sgrubb/$pkgbase/$pkgbase-$pkgver.tar.gz)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
 
   ./configure --prefix=/usr --enable-static=no --with-python=no
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
 
   make DESTDIR=$pkgdir install
 }
