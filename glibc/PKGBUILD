@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 180858 2013-03-27 11:12:12Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: valgrind requires rebuilt with each major glibc version
 
-pkgname=glibc
-pkgver=2.17
-pkgrel=4
 pkgdesc="GNU C Library"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
@@ -19,23 +16,16 @@ backup=(etc/gai.conf
         etc/nscd.conf)
 options=('!strip')
 install=glibc.install
-source=(http://ftp.gnu.org/gnu/libc/${pkgname}-${pkgver}.tar.xz{,.sig}
+source=(http://ftp.gnu.org/gnu/libc/${pkgbase}-${pkgver}.tar.xz{,.sig}
         glibc-2.17-sync-with-linux37.patch
         nscd.service
         nscd.tmpfiles
         locale.gen.txt
         locale-gen)
-md5sums=('87bf675c8ee523ebda4803e8e1cec638'
-         '6db4d1661cf34282755dc90330465f6d'
-         'fb99380d94598cc76d793deebf630022'
-         'c1e07c0bec0fe89791bfd9d13fc85edf'
-         'bccbe5619e75cf1d97312ec3681c605c'
-         '07ac979b6ab5eeb778d55f041529d623'
-         '476e9113489f93b348b21e144b6a8fcf')
 
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
 
   # combination of upstream commits 318cd0b, b540704 and fc1abbe
   patch -p1 -i ${srcdir}/glibc-2.17-sync-with-linux37.patch
@@ -56,7 +46,7 @@ build() {
   CFLAGS=${CFLAGS/-fstack-protector/}
   CFLAGS=${CFLAGS/-D_FORTIFY_SOURCE=2/}
 
-  ${srcdir}/${pkgname}-${pkgver}/configure --prefix=/usr \
+  ${srcdir}/${pkgbase}-${pkgver}/configure --prefix=/usr \
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --with-headers=/usr/include \
       --with-bugurl=https://bugs.archlinux.org/ \
@@ -101,11 +91,11 @@ package() {
 
   install -dm755 ${pkgdir}/usr/lib/{locale,systemd/system,tmpfiles.d}
 
-  install -m644 ${srcdir}/${pkgname}-${pkgver}/nscd/nscd.conf ${pkgdir}/etc/nscd.conf
+  install -m644 ${srcdir}/${pkgbase}-${pkgver}/nscd/nscd.conf ${pkgdir}/etc/nscd.conf
   install -m644 ${srcdir}/nscd.service ${pkgdir}/usr/lib/systemd/system
   install -m644 ${srcdir}/nscd.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/nscd.conf
 
-  install -m644 ${srcdir}/${pkgname}-${pkgver}/posix/gai.conf ${pkgdir}/etc/gai.conf
+  install -m644 ${srcdir}/${pkgbase}-${pkgver}/posix/gai.conf ${pkgdir}/etc/gai.conf
 
   install -m755 ${srcdir}/locale-gen ${pkgdir}/usr/bin
 
