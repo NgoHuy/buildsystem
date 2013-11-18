@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 189718 2013-07-05 18:06:13Z bpiotrowski $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: Eduardo Romero <eduardo@archlinux.org>
-# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Tom Gundersen <teg@jklm.no>
+# Original Contributor: Eduardo Romero <eduardo@archlinux.org>
+# Original Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
-pkgname=libgphoto2
-pkgver=2.5.2
-pkgrel=2
 pkgdesc="The core library of gphoto2, designed to allow access to digital camera by external programs."
 arch=(i686 x86_64)
 url="http://www.gphoto.org"
@@ -14,11 +11,10 @@ license=(LGPL)
 depends=('libexif' 'libjpeg' 'gd' 'libltdl' 'libusb')
 install=libgphoto2.install
 options=('libtool')
-source=(http://downloads.sourceforge.net/gphoto/${pkgname}-${pkgver}.tar.gz)
-md5sums=('d9f4462957e59bf2b2eb3b1ea8423570')
+source=(http://downloads.sourceforge.net/gphoto/${pkgbase}-${pkgver}.tar.gz)
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure \
 	--prefix=/usr \
 	--disable-rpath
@@ -26,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   # Remove unused udev helper
