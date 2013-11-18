@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 193928 2013-09-06 08:06:06Z bpiotrowski $
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributer: Allan McRae <allan@archlinux.org>
 # Contributer: Jason Chu <jason@archlinux.org>
 
-pkgname=python2
-pkgver=2.7.5
-pkgrel=2
 _pybasever=2.7
 pkgdesc="A high-level scripting language"
 arch=('i686' 'x86_64')
@@ -18,8 +15,6 @@ conflicts=('python<3')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver%rc?}/Python-${pkgver}.tar.xz
         python-2.7.5-CVE-2013-4238.patch)
-sha1sums=('b7389791f789625c2ba9d897aa324008ff482daf'
-          'fb1f95ca21d9c00eaaea5a58236d1d97300482d7')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -93,5 +88,5 @@ package() {
   sed -i "s#${srcdir}/Python-${pkgver}:##" "${pkgdir}"/usr/lib/python${_pybasever}/config/Makefile
 
   # license
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
 }
