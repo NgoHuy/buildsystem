@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194425 2013-09-16 10:28:11Z jgc $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=libdrm
-pkgver=2.4.46
-pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services"
 arch=(i686 x86_64)
 license=('custom')
@@ -13,13 +10,11 @@ checkdepends=('cairo')
 replaces=('libdrm-new' 'libdrm-nouveau')
 options=('!libtool')
 url="http://dri.freedesktop.org/"
-source=(http://dri.freedesktop.org/$pkgname/$pkgname-$pkgver.tar.bz2
+source=(http://dri.freedesktop.org/$pkgbase/$pkgbase-$pkgver.tar.bz2
         COPYING)
-sha256sums=('33cf320dad4e8060768714792e12643ddf6756a719d262ba7d60b39c2b2650f1'
-            '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
 
   # pthread is useless in Linux
   sed -i "/pthread-stubs/d" configure.ac
@@ -35,13 +30,13 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make -k check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
-  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m755 -d "$pkgdir/usr/share/licenses/$pkgbase"
+  install -m644 ../COPYING "$pkgdir/usr/share/licenses/$pkgbase/"
 }
