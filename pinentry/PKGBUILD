@@ -1,8 +1,5 @@
-# $Id: PKGBUILD 178728 2013-02-26 15:13:52Z andrea $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-pkgname=pinentry
-pkgver=0.8.2
-pkgrel=2
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 pkgdesc="a collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,12 +8,12 @@ depends=('ncurses' 'libcap>=2.16')
 makedepends=('gtk2' 'qt4')
 optdepends=('gtk2: for gtk2 backend'
             'qt4: for qt4 backend')  
-source=(ftp://ftp.gnupg.org/gcrypt/$pkgname/$pkgname-$pkgver.tar.bz2
+source=(ftp://ftp.gnupg.org/gcrypt/$pkgbase/$pkgbase-$pkgver.tar.bz2
         qt4-pinentry-window.patch)
 install=pinentry.install
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   #fix: https://bugs.archlinux.org/task/29998
   patch -Np1 -i ../qt4-pinentry-window.patch
   for file in qt4/*.moc; do
@@ -33,8 +30,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=${pkgdir} install 
 }
-md5sums=('82e6114e5e27a8ab36f314b332a6e024'
-         '450b8713fe42f1bd93311ef84767c3d8')
