@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 193653 2013-08-26 18:56:06Z ronald $
-# Maintainer: Ronald van Haren <ronald@archlinux.org>
-# Contributor: Gustavo Sverzut Barbieri <barbieri@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald@archlinux.org>
+# Original Contributor: Gustavo Sverzut Barbieri <barbieri@gmail.com>
 
-pkgname=evas
-pkgver=1.7.8
-pkgrel=1
 pkgdesc="A hardware-accelerated canvas API for X-Windows"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -12,11 +9,10 @@ license=('BSD')
 depends=('eet' 'giflib' 'libpng' 'libjpeg' 'libxrender' 'mesa'
   'fribidi' 'fontconfig' 'freetype2' 'harfbuzz' 'evas_generic_loaders')
 options=('!libtool' '!emptydirs')
-source=(http://download.enlightenment.org/releases/$pkgname-$pkgver.tar.gz)
-sha1sums=('ce71de058896e80c8f1822d967a6dcee01a1c9ac')
+source=(http://download.enlightenment.org/releases/$pkgbase-$pkgver.tar.gz)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
 
   export CFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CFLAGS}"
   export CXXFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CXXFLAGS}"
@@ -56,12 +52,12 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
   # install license files
-  install -Dm644 "$srcdir/$pkgname-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "$srcdir/$pkgbase-$pkgver/COPYING" \
+        "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
 }
 
 
