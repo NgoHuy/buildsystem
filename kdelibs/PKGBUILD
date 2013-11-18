@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 194033 2013-09-10 12:51:41Z andrea $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andrea Scarpino <andrea@archlinux.org
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=kdelibs
-pkgver=4.11.1
-pkgrel=1
 pkgdesc="KDE Core Libraries"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdelibs'
@@ -15,16 +12,12 @@ depends=('strigi' 'attica' 'libxss' 'soprano' 'krb5' 'grantlee'
         'docbook-xsl' 'upower' 'udisks2' 'libxcursor' 'phonon'
         'media-player-info' 'libxtst' 'libutempter' 'qtwebkit')
 makedepends=('cmake' 'automoc4' 'avahi' 'libgl' 'hspell' 'mesa')
-install=${pkgname}.install
-source=("http://download.kde.org/stable/${pkgver}/src/${pkgname}-${pkgver}.tar.xz"
+install=${pkgbase}.install
+source=("http://download.kde.org/stable/${pkgver}/src/${pkgbase}-${pkgver}.tar.xz"
         'kde-applications-menu.patch' 'archlinux-menu.patch' 'qt4.patch')
-sha1sums=('db938479fe1599f9f1ac497de48ad8de692ac6c9'
-          '86ee8c8660f19de8141ac99cd6943964d97a1ed7'
-          '63a850ab4196b9d06934f2b4a13acd9f7739bc67'
-          'ed1f57ee661e5c7440efcaba7e51d2554709701c')
 
 prepare() {
-       cd ${pkgname}-${pkgver}
+       cd ${pkgbase}-${pkgver}
        # avoid file conflict with gnome-menus
        patch -p1 -i "${srcdir}"/kde-applications-menu.patch
        # add Archlinux menu entry
@@ -36,7 +29,7 @@ prepare() {
 build() {
        mkdir build
        cd build
-       cmake ../${pkgname}-${pkgver} \
+       cmake ../${pkgbase}-${pkgver} \
                -DCMAKE_BUILD_TYPE=Release \
                -DKDE4_BUILD_TESTS=OFF \
                -DCMAKE_SKIP_RPATH=ON \
