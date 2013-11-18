@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 97274 2013-09-16 07:33:26Z bluewind $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
 _pkgbasename=libsm
-pkgname=lib32-$_pkgbasename
-pkgver=1.2.2
-pkgrel=1
 pkgdesc="X11 Session Management library (32-bit)"
 arch=('x86_64')
 license=('custom')
@@ -13,7 +10,6 @@ depends=('lib32-libice' 'lib32-util-linux' $_pkgbasename)
 makedepends=('xorg-util-macros' 'xtrans' 'gcc-multilib')
 options=('!libtool')
 source=(${url}/releases/individual/lib/libSM-${pkgver}.tar.bz2)
-sha1sums=('e6d5dab6828dfd296e564518d2ed0a349a25a714')
 
 build() {
   cd "${srcdir}/libSM-${pkgver}"
@@ -32,5 +28,5 @@ package() {
   rm -rf "${pkgdir}"/usr/{include,share}
 
   mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname" 
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase" 
 }
