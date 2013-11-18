@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 183829 2013-04-28 07:03:43Z eric $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Original Contributor: Allan McRae <allan@archlinux.org>
+# Original Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=sdl_image
-pkgver=1.2.12
-pkgrel=3
 pkgdesc="A simple library to load images of various formats as SDL surfaces"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -13,7 +10,6 @@ depends=('sdl>=1.2.13' 'libpng' 'libjpeg>=7' 'libtiff' 'zlib')
 options=('!libtool')
 url="http://www.libsdl.org/projects/SDL_image/"
 source=(http://www.libsdl.org/projects/SDL_image/release/SDL_image-$pkgver.tar.gz)
-md5sums=('a0f9098ebe5400f0bdc9b62e60797ecb')
 
 build() {
   cd SDL_image-$pkgver
@@ -25,5 +21,5 @@ package() {
   cd SDL_image-$pkgver
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
