@@ -12,12 +12,12 @@ depends=('ncurses')
 source=(http://downloads.sourceforge.net/psmisc/${pkgbase}-${pkgver}.tar.gz)
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
