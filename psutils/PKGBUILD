@@ -16,7 +16,7 @@ source=("ftp://ftp.archlinux.org/other/psutils/${pkgbase}-${pkgver}.tar.gz"
         'psutils-1.17.diff')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   patch -Np1 -i "${srcdir}/psutils-1.17.diff"
   make -f Makefile.unix BINDIR=/usr/bin \
     INCLUDEDIR=/usr/include/psutils PERL=/usr/bin/perl \
@@ -26,12 +26,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   install -d -m755 "${pkgdir}/usr/include"
   install -d -m755 "${pkgdir}/usr/share/man"
   make -f Makefile.unix BINDIR="${pkgdir}/usr/bin" \
     INCLUDEDIR="${pkgdir}/usr/include/psutils" PERL=/usr/bin/perl \
     MANDIR="${pkgdir}/usr/share/man/man1" install
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/"
 }
