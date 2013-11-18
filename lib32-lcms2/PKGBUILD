@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 95799 2013-08-16 23:01:57Z lcarlier $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
-# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
+# Original Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 _pkgbasename=lcms2
-pkgname=lib32-lcms2
-pkgver=2.5
-pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (32-bit)"
 arch=('x86_64')
 license=('MIT')
@@ -14,7 +11,6 @@ makedepends=('gcc-multilib')
 url="http://www.littlecms.com"
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/lcms/${_pkgbasename}-${pkgver}.tar.gz)
-sha1sums=('dc2ca966a857dd22d29f98632b7fa76f16abda1e')
 
 build() {
   export CC="gcc -m32"
@@ -40,5 +36,5 @@ package() {
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
   mkdir -p "${pkgdir}/usr/share/licenses"
-  ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
