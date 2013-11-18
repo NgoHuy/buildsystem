@@ -13,13 +13,13 @@ depends=('ncurses' 'libevent')
 source=("http://downloads.sourceforge.net/tmux/tmux-$pkgver.tar.gz" LICENSE)
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgbase-$pkgver"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgbase-$pkgver"
 	make install DESTDIR=$pkgdir
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/tmux/LICENSE"
 
