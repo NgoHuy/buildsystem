@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194566 2013-09-18 14:39:01Z jgc $
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-pkgname=libpeas
-pkgver=1.9.0
-pkgrel=1
 pkgdesc="A GObject-based plugins engine"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
@@ -14,12 +11,11 @@ optdepends=('gjs: gobject-based plugin engine - gjs runtime loader'
             'seed: gobject-based plugin engine - seed runtime loader')
 options=('!libtool')
 install=libpeas.install
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.xz)
-sha256sums=('008747ccdf954dc7b8e3207fffede527a589363541873f906c8e0166f6f7df8d')
+source=(http://download.gnome.org/sources/$pkgbase/${pkgver%.*}/$pkgbase-${pkgver}.tar.xz)
 
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
@@ -29,12 +25,12 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="${pkgdir}" install
 }
 
