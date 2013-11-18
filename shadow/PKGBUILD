@@ -31,7 +31,7 @@ source=("http://pkg-shadow.alioth.debian.org/releases/$pkgbase-$pkgver.tar.bz2"{
         lastlog.tmpfiles)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   # avoid transitive linking issues with binutils 2.22
   sed -i '/^user\(mod\|add\)_LDADD/s|$| -lattr|' src/Makefile.am
@@ -59,7 +59,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
