@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 191855 2013-07-31 16:26:21Z bpiotrowski $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: Mark Rosenstand <mark@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Original Contributor: Tom Gundersen <teg@jklm.no>
+# Original Contributor: Mark Rosenstand <mark@archlinux.org>
 
-pkgname=fuse
-pkgver=2.9.3
-pkgrel=1
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program."
 arch=('i686' 'x86_64')
 url="http://fuse.sourceforge.net/"
@@ -13,14 +10,12 @@ license=('GPL2')
 depends=('glibc')
 makedepends=('pkg-config')
 backup=(etc/fuse.conf)
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
+source=(http://downloads.sourceforge.net/$pkgbase/$pkgbase-$pkgver.tar.gz
 	'fuse.conf')
 options=(!libtool)
-sha1sums=('94bd1974a9f2173ac3c2cf122f9fa3c35996b88e'
-          '3b42e37a741d4651099225987dc40e7f02a716ad')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   # fix building with glibc-2.14
   sed -i '1i#define _GNU_SOURCE' util/fusermount.c 
@@ -29,14 +24,14 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   ./configure --prefix=/usr --libdir=/usr/lib \
               --enable-lib --enable-util
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   make DESTDIR=${pkgdir} install
 
