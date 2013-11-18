@@ -1,26 +1,20 @@
-# $Id: PKGBUILD 192026 2013-08-04 10:57:11Z tomegun $
-# Maintainer: Tom Gundersen <teg@jklm.no>
-# Contributor: AndyRTR <andyrtr@archlinux.org>
-# Contributor: Francois Charette <francois.archlinux.org> 
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tom Gundersen <teg@jklm.no>
+# Original Contributor: AndyRTR <andyrtr@archlinux.org>
+# Original Contributor: Francois Charette <francois.archlinux.org> 
 
 pkgbase=redland
 epoch=1
-pkgname=('redland' 'redland-storage-mysql' 'redland-storage-postgresql' 'redland-storage-virtuoso' 'redland-storage-sqlite')
-pkgver=1.0.16
-pkgrel=3
 url="http://librdf.org/"
 license=("GPL")
 arch=('i686' 'x86_64')
 makedepends=('rasqal' 'raptor' 'db' 'postgresql-libs' 'libmariadbclient' 'unixodbc' 'sqlite')
 options=('!libtool')
-source=(http://download.librdf.org/source/$pkgname-$pkgver.tar.gz{,.asc}
+source=(http://download.librdf.org/source/$pkgbase-$pkgver.tar.gz{,.asc}
         rpath.diff)
-sha256sums=('d9a274fc086e61119d5c9beafb8d05527e040ec86f4c0961276ca8de0a049dbd'
-            '2955af40eb2fbffa6e1ef28f7f1b7f607a3958478a5080896b878da96605246d'
-            '9ddf9f7581f5194d73ad908f3b26354c70d3079a7a87c8add8a0d0e4c6974fec')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr \
 	--enable-release \
 	--disable-static \
