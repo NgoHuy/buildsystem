@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 166915 2012-09-22 00:40:29Z dreisner $
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Thomas Bächler <thomas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Original Maintainer: Thomas Bächler <thomas@archlinux.org>
 
-pkgname=mkinitcpio-busybox
-pkgver=1.20.2
-pkgrel=1
 pkgdesc="base initramfs tools"
 arch=('i686' 'x86_64')
 url="http://www.busybox.net/"
@@ -14,9 +11,6 @@ options=('!buildflags')
 source=("http://busybox.net/downloads/busybox-$pkgver.tar.bz2"
         'glibc-2.16.patch'
         'config')
-sha256sums=('eb13ff01dae5618ead2ef6f92ba879e9e0390f9583bd545d8789d27cf39b6882'
-            'fb5b6e2a0de4db5401322e5c2474ad8ce6a58615dad45b7109cfe045baf2c88d'
-            'd8064ed6ec21868e4afe057445e2d852b353abd595132cb1ca3ba345988772f0')
 
 build() {
   cd "$srcdir/busybox-$pkgver"
