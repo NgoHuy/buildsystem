@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 191336 2013-07-23 17:10:38Z jgc $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Sarah Hay <sarah@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Sarah Hay <sarah@archlinux.org>
 
-pkgname=glib-perl
-pkgver=1.301
-pkgrel=1
 pkgdesc="Perl wrappers for glib 2.x, including GObject"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -13,7 +10,6 @@ options=('!emptydirs')
 depends=('glib2' 'perl')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Glib-${pkgver}.tar.gz)
-md5sums=('7c0d005a20afff174c99a83c72f9786b')
 
 build() {
   cd "${srcdir}/Glib-${pkgver}"
