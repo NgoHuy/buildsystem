@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 193054 2013-08-14 20:23:25Z andrea $
-# Maintainer: Ronald van Haren <ronald@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald@archlinux.org>
+# Original Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins' 'libkface' 'libkgeomap' 'libkvkontakte' 'libmediawiki')
-pkgver=3.3.0
-pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -14,8 +11,7 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('ecf8d9eca918059cdd90ef3538295ee9873fb55f')
+source=("http://download.kde.org/stable/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2")
 
 prepare() {
   mkdir build
@@ -23,7 +19,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
