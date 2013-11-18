@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 160340 2012-06-01 10:48:10Z stephane $
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Sergej Pupykin <pupykin.s@arch@gmail.com>
-# Contributor: Andreas Wagner <Andreas.Wagner@em.uni-frankfurt.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Original Contributor: Sergej Pupykin <pupykin.s@arch@gmail.com>
+# Original Contributor: Andreas Wagner <Andreas.Wagner@em.uni-frankfurt.de>
 
-pkgname=heirloom-mailx
-pkgver=12.5
-pkgrel=3
 pkgdesc="A commandline utility for sending and receiving email"
 arch=('i686' 'x86_64')
 url="http://heirloom.sourceforge.net/mailx.html"
@@ -17,8 +14,7 @@ replaces=('mailx' 'mailx-heirloom')
 provides=('mailx' 'mailx-heirloom')
 conflicts=('mailx' 'mailx-heirloom')
 backup=(etc/mail.rc)
-source=(ftp://ftp.archlinux.org/other/${pkgname}/${pkgname}-${pkgver}.tar.xz)
-sha1sums=('1998dd6168a68400e533712ae7163c72b6a7c056')
+source=(ftp://ftp.archlinux.org/other/${pkgbase}/${pkgbase}-${pkgver}.tar.xz)
 options=('!makeflags') # Does not build with MAKEFLAGS=-jX, X>1
 
 # source PKGBUILD && mksource
@@ -27,14 +23,14 @@ mksource() {
   D=nail
   [ -d "${D}" ] && cvs up "${D}" || cvs co "${D}"
   
-  _dirname=${pkgname}-${pkgver}
+  _dirname=${pkgbase}-${pkgver}
   mv $D ${_dirname}
   tar -cJv --exclude=CVS -f ${_dirname}.tar.xz ${_dirname}
   rm -rf ${_dirname}
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   sed -i 's|/etc/nail.rc|/etc/mail.rc|g' mailx.1
 
@@ -53,12 +49,12 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" `cat makeflags` install
 
   # For compatibility with the old mailx program
   ln -sf mailx "${pkgdir}"/usr/bin/mail
   ln -sf mailx.1.gz "${pkgdir}"/usr/share/man/man1/mail.1.gz
 
-  install -D -m0644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m0644 COPYING "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
 }
