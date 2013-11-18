@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 166349 2012-09-06 20:52:06Z jgc $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=json-glib
-pkgver=0.15.2
-pkgrel=1
 pkgdesc="JSON library built on GLib"
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/JsonGlib"
@@ -11,21 +8,20 @@ license=('GPL')
 depends=('glib2')
 makedepends=('gobject-introspection')
 options=('!libtool')
-source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/0.15/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('f090cd94acc85989e033d72028fa70863d05092ae5bba6b454e70c132b24cdde')
+source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/0.15/${pkgbase}-${pkgver}.tar.xz)
 
 build(){
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package(){
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
 
 check(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make check
 }
