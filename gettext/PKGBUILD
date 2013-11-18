@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 179543 2013-03-06 14:26:56Z tpowa $
-# Maintainer:
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer:
 
-pkgname=gettext
-pkgver=0.18.2.1
-pkgrel=1
 pkgdesc="GNU internationalization library"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gettext/"
@@ -13,22 +10,20 @@ depends=('gcc-libs' 'acl' 'sh' 'glib2')
 optdepends=('cvs: for autopoint tool')
 options=(!libtool !docs)
 install=gettext.install
-source=(ftp://ftp.gnu.org/pub/gnu/gettext/${pkgname}-${pkgver}.tar.gz{,.sig})
-md5sums=('034c8103b14654ebd300fadac44d6f14'
-         'e4658c307333395a12f8d0b4d95fbb0f')
+source=(ftp://ftp.gnu.org/pub/gnu/gettext/${pkgbase}-${pkgver}.tar.gz{,.sig})
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
