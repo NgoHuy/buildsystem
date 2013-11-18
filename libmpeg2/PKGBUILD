@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 177014 2013-02-04 08:35:10Z jgc $
-# Contributor: Sarah Hay <sarah@archlinux.org>
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Contributor: Sarah Hay <sarah@archlinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=libmpeg2
-pkgver=0.5.1
-pkgrel=4
 pkgdesc="Library for decoding MPEG-1 and MPEG-2 video streams."
 arch=('i686' 'x86_64')
 url="http://libmpeg2.sourceforge.net/"
@@ -12,16 +9,14 @@ depends=('glibc')
 makedepends=('sdl' 'libxv')
 optdepends=('sdl: required for mpeg2dec'
             'libxv: required for mpeg2dec')
-source=(http://libmpeg2.sourceforge.net/files/${pkgname}-${pkgver}.tar.gz
+source=(http://libmpeg2.sourceforge.net/files/${pkgbase}-${pkgver}.tar.gz
         libmpeg2-0.5.1-gcc4.6.patch)
 license=('GPL2')
 options=(!libtool)
 provides=('mpeg2dec')
-md5sums=('0f92c7454e58379b4a5a378485bbd8ef'
-         '8b36660297e6ffde6aa9733136bff405')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   patch -Np1 -i "${srcdir}/libmpeg2-0.5.1-gcc4.6.patch"
 
   sed '/AC_PATH_XTRA/d' -i configure.ac
@@ -34,6 +29,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
