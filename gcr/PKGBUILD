@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194843 2013-09-23 19:16:21Z jgc $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=gcr
-pkgver=3.10.0
-pkgrel=1
 pkgdesc="A library for bits of crypto UI and parsing"
 arch=(i686 x86_64)
 url="http://www.gnome.org"
@@ -12,13 +9,11 @@ depends=('dconf' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libgcrypt')
 makedepends=('intltool' 'gobject-introspection' 'python')
 options=(!libtool)
 install=gcr.install
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz
+source=(http://download.gnome.org/sources/$pkgbase/${pkgver%.*}/$pkgbase-$pkgver.tar.xz
         10-gcr.conf)
-sha256sums=('b689c679b244c1f47d773002c33dadc4111cddeb05bc2f3651826893fd43ff1b'
-            '5f2eda7175ae9f23ee0e09d2beceb24fd2f6daafd7bddfcc1c1f5a3734eb60fc')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   ./configure --prefix=/usr \
     --libexec=/usr/lib/gcr \
     --disable-static \
@@ -28,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
 
   # gcr wants to lock some memory to prevent swapping out private keys
