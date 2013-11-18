@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 191266 2013-07-22 18:08:35Z bpiotrowski $
-# Maintainer: Ray Rashif <schiv@archlinux.org>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ray Rashif <schiv@archlinux.org>
+# Original Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=opencv
-pkgname=('opencv' 'opencv-samples')
 _realname=OpenCV
-pkgver=2.4.6.1
-pkgrel=2
 pkgdesc="Open Source Computer Vision Library"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -18,14 +15,10 @@ makedepends=('cmake' 'python2-numpy' 'mesa'
 optdepends=('opencv-samples'
             'eigen2'
             'python2-numpy: Python 2.x interface')
-source=("http://downloads.sourceforge.net/opencvlibrary/$pkgname-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/opencvlibrary/$pkgbase-$pkgver.tar.gz"
         'pkgconfig.patch'
         'fsh.patch'
         'cldetect.patch')
-md5sums=('d756bfa460891697571d5c90050e1cfe'
-         'cb916260b5ec594fe7a0cc2e54fc569f'
-         '35256e3ccace373feba8131d1540a0de'
-         '0dd6572405adc2387ded4c95be0f189c')
 
 _cmakeopts=('-D WITH_OPENCL=ON'
             '-D WITH_OPENGL=ON'
@@ -51,7 +44,7 @@ _cmakeopts=('-D WITH_OPENCL=ON'
 [[ "$CARCH" = 'x86_64' ]] && _cmakeopts+=('-D ENABLE_SSE3=OFF')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   # fix missing opencl module
   # see https://bugs.archlinux.org/task/36076
@@ -73,7 +66,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   cmake ${_cmakeopts[@]} .
 
@@ -81,18 +74,18 @@ build() {
 }
 
 package_opencv() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
   # install license file
-  install -Dm644 "$srcdir/$pkgname-$pkgver/doc/license.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgbase-$pkgver/doc/license.txt" \
+    "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 
   cd "$pkgdir/usr/share"
 
   # separate samples package; also be -R friendly
-  [[ -d $pkgname/samples ]] && mv $pkgname/samples "$srcdir/opencv-samples"
+  [[ -d $pkgbase/samples ]] && mv $pkgbase/samples "$srcdir/opencv-samples"
 }
 
 package_opencv-samples() {
@@ -106,7 +99,7 @@ package_opencv-samples() {
 
   # install license file
   install -Dm644 "$srcdir/opencv-$pkgver/doc/license.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
