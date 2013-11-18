@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 194912 2013-09-24 08:07:31Z jgc $
-# Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Original Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=gnome-icon-theme-symbolic
-pkgver=3.10.0
-pkgrel=1
 pkgdesc="GNOME icon theme, symbolic icons"
 arch=(any)
 depends=(gtk-update-icon-cache icon-naming-utils hicolor-icon-theme librsvg)
@@ -13,16 +10,15 @@ url="http://www.gnome.org"
 license=(GPL)
 install=gnome-icon-theme-symbolic.install
 groups=(gnome)
-source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('70d3ed884cbee59f2335198b5759d09ab1e075df1ced2730c20c926dd3670334')
+source=(http://ftp.gnome.org/pub/gnome/sources/$pkgbase/${pkgver%.*}/$pkgbase-$pkgver.tar.xz)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   GTK_UPDATE_ICON_CACHE=/bin/true ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
 }
