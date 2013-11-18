@@ -1,15 +1,12 @@
-# $Id: PKGBUILD 97321 2013-09-17 13:42:05Z bluewind $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: dorphell <dorphell@archlinux.org>
-# Contributor: Travis Willard <travis@archlinux.org>
-# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: dorphell <dorphell@archlinux.org>
+# Original Contributor: Travis Willard <travis@archlinux.org>
+# Original Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 _pkgbasename=libpng
-pkgname=lib32-$_pkgbasename
-pkgver=1.6.5
 _apngver=1.6.3
 _libversion=16
-pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files (32-bit)"
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -19,9 +16,6 @@ makedepends=(gcc-multilib)
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz"{,.asc}
         "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-${_apngver}-apng.patch.gz")
-md5sums=('dec292dd99b094cea03bdd7232f5a80c'
-         'SKIP'
-         '57007fc121baa2cdc48abcfb26300e78')
 
 build() {
   export CC="gcc -m32"
@@ -52,5 +46,5 @@ package() {
   ln -s "libpng${_libversion}-config-32" "$pkgdir/usr/bin/libpng-config-32"
 
   mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgbase"
 }
