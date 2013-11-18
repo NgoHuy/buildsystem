@@ -1,13 +1,10 @@
-# $Id: PKGBUILD 178887 2013-02-28 10:32:20Z tomegun $
-# Maintainer: Tom Gundersen <teg@jklm.no>
-pkgname=hwids
-pkgver=20130228
-pkgrel=1
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tom Gundersen <teg@jklm.no>
 pkgdesc="hardware identification databases"
 url=https://github.com/gentoo/hwids
 license=('GPL2')
 arch=('any')
-source=("https://github.com/gentoo/${pkgname}/tarball/${pkgname}-${pkgver}")
+source=("https://github.com/gentoo/${pkgbase}/tarball/${pkgbase}-${pkgver}")
 
 package() {
   cd "${srcdir}/gentoo-hwids"*
@@ -16,4 +13,3 @@ package() {
     install -Dm644 "$ids" "${pkgdir}/usr/share/hwdata/${ids}"
   done
 }
-md5sums=('513e46eb5717cd893293d21ccb7ddd9f')
