@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 189982 2013-07-12 13:35:09Z andyrtr $
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase="cups"
-pkgname=('libcups' 'cups')
-pkgver=1.6.3
-pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.cups.org/"
@@ -30,22 +27,6 @@ source=(#http://mirror.easysw.com/pub/cups/${pkgver}/cups-${pkgver}-source.tar.b
         cupsd-no-crash-on-avahi-threaded-poll-shutdown.patch
         get-ppd-file-for-statically-configured-ipp-shared-queues.patch
         ppd-poll-with-client-conf.patch)
-md5sums=('3c50d396fef2ba721224fe65880fe3c3'
-         'f861b18f4446c43918c8643dcbbd7f6d'
-         '96f82c38f3f540b53f3e5144900acf17'
-         '3ba9e3410df1dc3015463d615ef91b3b'
-         'cc4101beccb5ed6deb1c92707a575925'
-         '90c30380d4c8cd48a908cfdadae1ea24'
-         'b4868b83f7f2d6ec24a1be76509379f0'
-         'a2a88b3a3257c3b5fd3edcc169e6aca4'
-         '8fe27d4248cacbc02824e7937cab4088'
-         'df0c367c0022e3c7d8e01827e8a6c5e7'
-         'f30c2a161caaf27854581507cde8cac6'
-         '5117f65342fcc69c6a506529e4daca9e'
-         '9247e218eea94ebda0aebc8ee0e77db8'
-         'cb58bf4e0b80eaee383712e5c84a1ab4'
-         'b578bcd17949a7203237ba1e31f78ef9'
-         '0becd6ab8782b97f19a02c1dc174c75e')
 
 prepare() {
 
