@@ -1,22 +1,19 @@
-# $Id: PKGBUILD 183074 2013-04-17 10:44:02Z tomegun $
-# Maintainer: Tom Gundersen <teg@jklm.no>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Sean Middleditch <elanthis@awesomeplay.com>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tom Gundersen <teg@jklm.no>
+# Original Contributor: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Sean Middleditch <elanthis@awesomeplay.com>
+# Original Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=docbook-xsl
-pkgver=1.78.1
-pkgrel=1
 pkgdesc='XML stylesheets for Docbook-xml transformations'
 arch=('any')
 license=('custom')
 url='http://docbook.sourceforge.net/'
 depends=('libxml2' 'libxslt' 'docbook-xml')
-install="$pkgname.install"
-source=("http://downloads.sourceforge.net/docbook/${pkgname}-${pkgver}.tar.bz2")
+install="$pkgbase.install"
+source=("http://downloads.sourceforge.net/docbook/${pkgbase}-${pkgver}.tar.bz2")
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	_pkgroot=${pkgdir}/usr/share/xml/docbook/xsl-stylesheets-${pkgver}
 
@@ -30,6 +27,5 @@ package() {
 	done
 
 	install -dm755 ${pkgdir}/etc/xml
-	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE
 }
-md5sums=('6dd0f89131cc35bf4f2ed105a1c17771')
