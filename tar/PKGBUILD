@@ -1,6 +1,6 @@
-# $Id: PKGBUILD 166859 2012-09-20 03:31:27Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
+# Original Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgdesc="Utility used to store, backup, and transport files"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(ftp://ftp.gnu.org/gnu/$pkgbase/$pkgbase-$pkgver.tar.xz{,.sig}
         tar.1)
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/$pkgbase-$pkgver
 
   # fix build failure with glibc-2.16
   sed -i -e '/gets is a/d' gnu/stdio.in.h
@@ -24,12 +24,12 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/$pkgbase-$pkgver
   make check
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/$pkgbase-$pkgver
   make DESTDIR=${pkgdir} install
   install -Dm644 ${srcdir}/tar.1 ${pkgdir}/usr/share/man/man1/tar.1
 }
