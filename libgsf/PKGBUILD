@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 193623 2013-08-26 08:14:39Z jgc $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 
-pkgname=libgsf
-pkgver=1.14.28
-pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="The GNOME Structured File Library is a utility library for reading and writing structured file formats"
 url="http://www.gnome.org/"
@@ -12,17 +9,16 @@ license=('GPL' 'LGPL')
 options=('!libtool')
 depends=('libxml2' 'gdk-pixbuf2' 'bzip2')
 makedepends=('intltool' 'gobject-introspection')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/1.14/$pkgname-$pkgver.tar.xz)
-sha256sums=('ea94914f1fdaa5d4eb49149f0228ae6e41a54bdeb8caf52a7dd8acaa329fcbe4')
+source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgbase/1.14/$pkgbase-$pkgver.tar.xz)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static --enable-introspection
   make
 }
 
 package_libgsf() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
 }
