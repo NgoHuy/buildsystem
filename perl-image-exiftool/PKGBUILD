@@ -1,13 +1,10 @@
-# $Id: PKGBUILD 144999 2011-12-13 23:07:09Z eric $
-# Maintainer: Florian Pritz <bluewind@xinu.at>
-# Contributor: tobias <tobias@archlinux.org>
-# Contributor: Tobias Kieslich <tobias@justdreams.de>
-# Contributor: Firmicus <francois.archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Florian Pritz <bluewind@xinu.at>
+# Original Contributor: tobias <tobias@archlinux.org>
+# Original Contributor: Tobias Kieslich <tobias@justdreams.de>
+# Original Contributor: Firmicus <francois.archlinux.org>
 
-pkgname=perl-image-exiftool
 _srcname=Image-ExifTool
-pkgver=9.27
-pkgrel=1
 pkgdesc="Reader and rewriter of EXIF informations that supports raw files"
 arch=('any')
 url="http://www.sno.phy.queensu.ca/~phil/exiftool/"
@@ -17,7 +14,6 @@ provides=("perl-exiftool=$pkgver")
 replaces=("perl-exiftool")
 options=('!emptydirs')
 source=(http://www.sno.phy.queensu.ca/~phil/exiftool/${_srcname}-$pkgver.tar.gz)
-md5sums=('c61f8f79c8e9f375e5be1ca0d13cc5fa')
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
