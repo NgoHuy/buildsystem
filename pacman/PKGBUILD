@@ -7,9 +7,6 @@
 # `PACKAGE_BASE` is always defined in `s-makepkg`, and this is to make sure
 # that this `PKGBUILD` can be used with the old `makepkg`
 pkgbase="${PACKAGE_BASE:-}"
-pkgname="${PACKAGE_BASE:-}"
-pkgver="${PACKAGE_VERSION:-}"
-pkgrel="${PACKAGE_RELEASE:-}"
 
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64')
@@ -42,11 +39,9 @@ source=("ftp://ftp.archlinux.org/other/pacman/$pkgbase-$pkgver.tar.gz"{,.sig}
         0010-Do-not-use-PACKAGE_CONFLICT_TYPE-to-get-conflict-typ.patch
         0011-Load-feature-PKGBUILD-if-any.patch
         0012-Use-TheSLinux-source-mirror-by-default.patch
-        0013-Skip-checksums-by-default.patch
-        )
 
 _patch_and_config() {
-  cd $srcdir/$pkgname-$pkgver/
+  cd $srcdir/$pkgbase-$pkgver/
   for _f_patch in ${srcdir}/000[1-9]*.patch ${srcdir}/001[0-3]*.patch; do
     patch -Np4 < "$_f_patch"
   done
@@ -59,17 +54,17 @@ _patch_and_config() {
 
 build() {
   _patch_and_config
-  cd $srcdir/$pkgname-$pkgver/
+  cd $srcdir/$pkgbase-$pkgver/
   make
   make -C contrib
 }
 
 check() {
-  make -C "$pkgname-$pkgver" check
+  make -C "$pkgbase-$pkgver" check
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install
   make DESTDIR=$pkgdir -C contrib install
 
