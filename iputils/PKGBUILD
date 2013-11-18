@@ -18,7 +18,7 @@ install=${pkgbase}.install
 source=("http://www.skbuff.net/${pkgbase}/${pkgbase}-s${pkgver//.}.tar.bz2")
 
 build() {
-  cd "${srcdir}/${pkgname}-s${pkgver//.}"
+  cd "${srcdir}/${pkgbase}-s${pkgver//.}"
 
   make USE_GNUTLS=no CCOPTOPT="$CFLAGS"
 
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-s${pkgver//.}"
+  cd "${srcdir}/${pkgbase}-s${pkgver//.}"
 
   install -dm755 "${pkgdir}"/usr/{bin,sbin} "${pkgdir}"/bin
 
