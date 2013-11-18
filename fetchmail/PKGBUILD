@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Maintainer: Anh K. Huynh
+# Original Maintainer: Anh K. Huynh
 # Original author: pierre
 
 pkgdesc="A remote-mail retrieval utility"
@@ -18,14 +18,14 @@ source=("http://download.berlios.de/$pkgbase/${pkgbase}-${pkgver}.tar.xz"
         'fetchmail.tmpfiles' 'fetchmail.service')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   sed -i 's|/usr/bin/env python|/usr/bin/env python2|' fetchmailconf.py
   PYTHON=python2 ./configure --prefix=/usr --with-ssl=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -d -o 90 -g nobody "${pkgdir}/var/lib/fetchmail"
   install -D -m644 ${srcdir}/fetchmail.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/fetchmail.conf
