@@ -1,28 +1,24 @@
-# $Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Angel Velasquez <angvp@archlinux.org>   
-# Contributor: Patrick Melo <patrick@patrickmelo.eti.br>
-pkgname=ctpl
-pkgver=0.3.3
-pkgrel=3
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Original Contributor: Angel Velasquez <angvp@archlinux.org>   
+# Original Contributor: Patrick Melo <patrick@patrickmelo.eti.br>
 pkgdesc="Template engine library written in C"
 arch=('x86_64' 'i686')
 url="http://ctpl.tuxfamily.org/"
 license=('GPL')
 depends=('glib2')
 options=(!libtool)
-source=("http://download.tuxfamily.org/ctpl/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('7da73e7d8f10d222f5685b8eb80541d7e4d342aa74673039692fa5c4e8b120a7')
+source=("http://download.tuxfamily.org/ctpl/releases/$pkgbase-$pkgver.tar.gz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   ./configure --prefix=/usr
   make 
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
