@@ -1,21 +1,17 @@
-# $Id: PKGBUILD 193638 2013-08-26 17:33:39Z ronald $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Original Contributor: Ronald van Haren <ronald.archlinux.org>
 
-pkgname=eet
-pkgver=1.7.8
-pkgrel=1
 pkgdesc="A data storage and compression library"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('libjpeg>=7' 'openssl' 'eina')
 options=(!libtool)
-source=(http://download.enlightenment.org/releases/$pkgname-$pkgver.tar.gz)
-sha1sums=('d68e17fb155954c7d524cdba98244c09ae511513')
+source=(http://download.enlightenment.org/releases/$pkgbase-$pkgver.tar.gz)
 
 build() {
-   cd $srcdir/$pkgname-$pkgver
+   cd $srcdir/$pkgbase-$pkgver
 
   export CFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CFLAGS}"
   export CXXFLAGS="-fvisibility=hidden -ffunction-sections -fdata-sections ${CXXFLAGS}"
@@ -30,12 +26,12 @@ build() {
 }
 
 package(){
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install 
 
   # install license files
-  install -Dm644 $srcdir/$pkgname-$pkgver/COPYING \
-        $pkgdir/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 $srcdir/$pkgbase-$pkgver/COPYING \
+        $pkgdir/usr/share/licenses/$pkgbase/COPYING
 }
 
 
