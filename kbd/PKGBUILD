@@ -1,24 +1,19 @@
-# $Id: PKGBUILD 175210 2013-01-16 18:18:07Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=kbd
-pkgver=1.15.5
-pkgrel=3
 pkgdesc="Keytable files and keyboard utilities"
 arch=('i686' 'x86_64')
 url="http://www.kbd-project.org"
 license=('GPL')
 depends=('glibc' 'pam')
-source=(ftp://ftp.altlinux.org/pub/people/legion/kbd/${pkgname}-${pkgver}.tar.gz
+source=(ftp://ftp.altlinux.org/pub/people/legion/kbd/${pkgbase}-${pkgver}.tar.gz
         'fix-keymap-loading-1.15.5.patch')
 provides=('vlock')
 conflicts=('vlock')
 replaces=('vlock')
-md5sums=('34c71feead8ab9c01ec638acea8cd877'
-         '4362091d5e23bab2d158f8c7693a45d8')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   # rename keymap files with the same names
   # this is needed because when only name of keymap is specified
   # loadkeys loads the first keymap it can find, which is bad (see FS#13837)
@@ -37,6 +32,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   make KEYCODES_PROGS=yes RESIZECONS_PROGS=yes DESTDIR=${pkgdir} install
 }
