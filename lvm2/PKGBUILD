@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 192546 2013-08-13 20:29:30Z thomas $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
-# Maintainer: Thomas Bächler <thomas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Eric Bélanger <eric@archlinux.org>
+# Original Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgbase=lvm2
-pkgname=('lvm2' 'device-mapper')
-pkgver=2.02.100
-pkgrel=1
 arch=('i686' 'x86_64')
 url="http://sourceware.org/lvm2/"
 license=('GPL2' 'LGPL2.1')
@@ -21,17 +18,6 @@ source=(ftp://sources.redhat.com/pub/lvm2/LVM2.${pkgver}.tgz{,.asc}
         lvm-monitoring.service
         lvmetad.service
         lvmetad.socket)
-sha1sums=('95a4478e4a19bba2c6eb8c36b08b310a96e3944b'
-          'SKIP'
-          '76e83966d1bc84f9a1e30bcaff84b8b8fefbca0f'
-          'ff0fdf0a3005a41acd4b36865056109effc3474b'
-          'f6a554eea9557c3c236df2943bb6e7e723945c41'
-          'ccefad65fde3d50331a42b0e90a1539dc7c8b9e4'
-          '01782ce8e10718c1513e3906b126f30f682f5cab'
-          '1d56f47a81350ae37ffbf61ee036fe31f4c5d504'
-          'adf26f5e5636de9c055b2ac3b179641a543a8937'
-          'f857a4a63fcc604a981e56875edda91767d4f1bf'
-          'fcfc265e3b10294cc4b10949a342e9db4310b186')
 
 prepare() {
   cd LVM2.${pkgver}
