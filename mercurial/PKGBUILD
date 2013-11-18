@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 193932 2013-09-07 05:53:45Z giovanni $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Original Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
-pkgname=mercurial
-pkgver=2.7.1
-pkgrel=1
 pkgdesc="A scalable distributed SCM tool"
 arch=('i686' 'x86_64')
 url="http://mercurial.selenic.com/"
@@ -12,13 +9,11 @@ license=('GPL')
 depends=('python2')
 optdepends=('tk: for the hgk GUI')
 backup=('etc/mercurial/hgrc')
-source=("http://mercurial.selenic.com/release/${pkgname}-${pkgver}.tar.gz"
+source=("http://mercurial.selenic.com/release/${pkgbase}-${pkgver}.tar.gz"
         'mercurial.profile')
-md5sums=('3313de3667902ae4dc82f29f5280294d'
-         '43e1d36564d4c7fbe9a091d3ea370a44')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
