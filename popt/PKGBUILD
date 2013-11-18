@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 155900 2012-04-08 23:39:57Z stephane $
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: dorphell <dorphell@archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
-# Contributor: John Proctor <jproctor@prium.net>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Original Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: dorphell <dorphell@archlinux.org>
+# Original Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Original Contributor: John Proctor <jproctor@prium.net>
 
 pkgdesc="A commandline option parser"
 arch=('i686' 'x86_64')
@@ -14,15 +14,15 @@ options=('!libtool')
 source=(http://rpm5.org/files/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
 }
