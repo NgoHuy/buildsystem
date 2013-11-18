@@ -15,7 +15,7 @@ source=(ftp://ftp.gnu.org/gnu/${pkgbase}/${pkgbase}-${pkgver}.tar.xz{,.sig}
         patch-2.7.1-initialize-data-structures-early-enough.patch)
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
 
   # Fix segfault on non-numeric strip-count
   # (also segfaults on nonexistent directory passed to -d)
@@ -28,11 +28,11 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   make check
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
   make DESTDIR=$pkgdir install
 }
