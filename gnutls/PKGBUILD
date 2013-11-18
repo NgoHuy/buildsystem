@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 193798 2013-09-01 09:22:47Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=gnutls
-pkgver=3.2.4
-pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer"
 arch=('i686' 'x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -13,12 +10,10 @@ install=gnutls.install
 options=('!libtool' '!zipman')
 depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit')
 makedepends=('valgrind' 'strace' 'datefudge')
-source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.2/${pkgname}-${pkgver}.tar.xz{,.sig})
-md5sums=('79ef8538d65128b7ed47046649b98c27'
-         'SKIP')
+source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.2/${pkgbase}-${pkgver}.tar.xz{,.sig})
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   ./configure --prefix=/usr \
 	--with-zlib \
 	--disable-static \
@@ -28,12 +23,12 @@ build() {
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   make -k check
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
   
   # lots of .png files are put into infodir and are gzipped by makepkg! this may need to be fixed by using !zipman
