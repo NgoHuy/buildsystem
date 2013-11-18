@@ -15,7 +15,7 @@ options=('!libtool')
 source=("http://download.savannah.gnu.org/releases/$pkgbase/$pkgbase-$pkgver.src.tar.gz"{,.sig})
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   export INSTALL_USER=root INSTALL_GROUP=root
   ./configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  make -C "$pkgname-$pkgver" DIST_ROOT="$pkgdir" install install-lib install-dev
+  make -C "$pkgbase-$pkgver" DIST_ROOT="$pkgdir" install install-lib install-dev
 
   # tidy up
   rm -f "$pkgdir"/usr/lib/libattr.a
