@@ -1,15 +1,12 @@
-# $Id: PKGBUILD 96775 2013-09-04 21:38:30Z bpiotrowski $
-# Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
-# Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: James Campos <james.r.campos@gmail.com>
-# Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: Dongsheng Cai <dongsheng at moodle dot com>
-# Contributor: Masutu Subric <masutu.arch at googlemail dot com>
-# Contributor: TIanyi Cui <tianyicui@gmail.com>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Original Contributor: Thomas Dziedzic < gostrc at gmail >
+# Original Contributor: James Campos <james.r.campos@gmail.com>
+# Original Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
+# Original Contributor: Dongsheng Cai <dongsheng at moodle dot com>
+# Original Contributor: Masutu Subric <masutu.arch at googlemail dot com>
+# Original Contributor: TIanyi Cui <tianyicui@gmail.com>
 
-pkgname=nodejs
-pkgver=0.10.18
-pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
@@ -19,7 +16,6 @@ makedepends=('python2')
 checkdepends=('curl')
 options=('!emptydirs')
 source=(http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz)
-sha256sums=('3ee4436473869d4d84bb5cad4352b09ace00656467eca7d6db7cd7da5b8c5495')
 
 prepare() {
   cd node-v$pkgver
