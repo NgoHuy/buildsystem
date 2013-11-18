@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 190058 2013-07-13 18:13:02Z heftig $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
+# Original Contributor: Alexander Baldeck <alexander@archlinux.org>
 
-pkgname=nspr
-pkgver=4.10
-pkgrel=2
 pkgdesc="Netscape Portable Runtime"
 arch=(i686 x86_64)
 url="http://www.mozilla.org/projects/nspr/"
@@ -12,11 +9,10 @@ license=('MPL' 'GPL')
 depends=('glibc')
 makedepends=('zip')
 options=('!emptydirs')
-source=(ftp://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${pkgver}/src/${pkgname}-${pkgver}.tar.gz)
-md5sums=('f5466def95726b3c900d8a0227bdd034')
+source=(ftp://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${pkgver}/src/${pkgbase}-${pkgver}.tar.gz)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
 
   if [[ $CARCH = x86_64 ]]; then
     _confflags="--enable-64bit"
@@ -34,7 +30,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
   chmod 644 "$pkgdir"/usr/lib/*.a
