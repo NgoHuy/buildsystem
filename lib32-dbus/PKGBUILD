@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 97470 2013-09-20 21:16:43Z eric $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
 
-pkgname=lib32-dbus
 _pkgbasename=dbus
-pkgver=1.6.14
-pkgrel=1
 pkgdesc="Freedesktop.org message bus system (32-bit)"
 arch=('x86_64')
 url="http://www.freedesktop.org/Software/dbus"
@@ -16,7 +13,6 @@ conflicts=('lib32-dbus-core')
 replaces=('lib32-dbus-core')
 options=(!libtool)
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-${pkgver}.tar.gz)
-md5sums=('1c22aebdf952e92908800f1ec2aeb0c4')
 
 build() {
     export CC="gcc -m32"
@@ -44,5 +40,5 @@ package() {
     rm -rf "${pkgdir}"/{etc,var}
 
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
