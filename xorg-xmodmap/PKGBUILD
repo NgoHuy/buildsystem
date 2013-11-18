@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 194307 2013-09-13 07:54:35Z andyrtr $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=xorg-xmodmap
-pkgver=1.0.8
-pkgrel=1
 pkgdesc="Utility for modifying keymaps and button mappings"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
@@ -12,7 +9,6 @@ depends=('libx11')
 makedepends=('xorg-util-macros')
 groups=('xorg-apps' 'xorg')
 source=(http://xorg.freedesktop.org/archive/individual/app/xmodmap-${pkgver}.tar.bz2)
-sha256sums=('efe2e3c89858a2db3bdcf969f55f55d0af4f5007789198344de0595249a99fc3')
 
 build() {
   cd "${srcdir}/xmodmap-${pkgver}"
@@ -23,5 +19,5 @@ build() {
 package() {
   cd "${srcdir}/xmodmap-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
 }
