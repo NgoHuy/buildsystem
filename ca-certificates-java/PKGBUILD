@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 193560 2013-08-23 18:42:40Z pierre $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgname=ca-certificates-java
-pkgver=20130815
-pkgrel=1
 pkgdesc='Common CA certificates (JKS keystore)'
 arch=('any')
 url='http://packages.qa.debian.org/c/ca-certificates-java.html'
@@ -13,20 +10,17 @@ makedepends=('jdk7-openjdk')
 checkdepends=('junit')
 install='ca-certificates-java.install'
 backup=('etc/default/cacerts')
-source=("http://ftp.debian.org/debian/pool/main/c/${pkgname}/${pkgname}_${pkgver}.tar.gz"
+source=("http://ftp.debian.org/debian/pool/main/c/${pkgbase}/${pkgbase}_${pkgver}.tar.gz"
         'init-jks-keystore' 'jks-keystore.hook')
-md5sums=('f93e4762800515d6f12ceb397e80a150'
-         '75eeca3f443f4b5a17ed5ac81875f1e9'
-         '6dd4f915aee0df51260083e00b7fa012')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 	javac -target 1.6 -source 1.6 UpdateCertificates.java
 	jar cfe ca-certificates-java.jar UpdateCertificates *.class
 }
 
 check() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	javac -cp /usr/share/java/junit.jar:/usr/share/ca-certificates-java/ca-certificates-java.jar \
 		UpdateCertificatesTest.java Exceptions.java
@@ -36,7 +30,7 @@ check() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	install -d -m755 ${pkgdir}/etc/ssl/certs/java
 	install -D -m600 debian/default ${pkgdir}/etc/default/cacerts
