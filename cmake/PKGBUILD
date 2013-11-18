@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 192289 2013-08-09 19:48:16Z eric $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=cmake
-pkgver=2.8.11.2
-pkgrel=2
 pkgdesc="A cross-platform open-source make system"
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -12,14 +9,12 @@ license=('custom')
 depends=('curl' 'libarchive' 'shared-mime-info')
 makedepends=('qt4' 'emacs')
 optdepends=('qt4: cmake-gui')
-install="${pkgname}.install"
-source=("http://www.cmake.org/files/v2.8/${pkgname}-${pkgver}.tar.gz"
+install="${pkgbase}.install"
+source=("http://www.cmake.org/files/v2.8/${pkgbase}-${pkgver}.tar.gz"
         'imagemagick.patch')
-md5sums=('6f5d7b8e7534a5d9e1a7664ba63cf882'
-         '19c4cf0e6e9c9a890f3698c9df8062f1')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   patch -p1 -i "${srcdir}"/imagemagick.patch
   sed -i 's/Magick++-6.Q16/Magick++-6.Q16 Magick++-6.Q16HDRI/' Modules/FindImageMagick.cmake
   sed -i 's/MagickWand-6.Q16/MagickWand-6.Q16 MagickWand-6.Q16HDRI/' Modules/FindImageMagick.cmake
@@ -27,7 +22,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
 
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
@@ -39,7 +34,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   vimpath="${pkgdir}/usr/share/vim/vimfiles"
@@ -51,5 +46,5 @@ package() {
   emacs -batch -f batch-byte-compile "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
 
   install -Dm644 Copyright.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
 }
