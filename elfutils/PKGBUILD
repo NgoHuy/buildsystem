@@ -1,10 +1,7 @@
-# $Id: PKGBUILD 194650 2013-09-20 08:46:21Z lcarlier $
-# Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Stéphane Gaudreault <stephane@archlinux.org>
+# Original Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 
-pkgname=elfutils
-pkgver=0.156
-pkgrel=1
 pkgdesc="Libraries and utilities to handle ELF object files and DWARF debugging information"
 arch=('i686' 'x86_64')
 url="https://fedorahosted.org/elfutils/"
@@ -14,11 +11,9 @@ provides=('libelf')
 replaces=('libelf')
 conflicts=('libelf')
 source=(https://fedorahosted.org/releases/e/l/elfutils/${pkgver}/elfutils-${pkgver}.tar.bz2{,.sig})
-sha1sums=('48b30828eb0fb47787e45d80db05c05bbe0eaa76'
-          'SKIP')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
 
   CFLAGS+=" -g"  # required for test-suite success
   ./configure --prefix=/usr --program-prefix="eu-"
@@ -27,13 +22,13 @@ build() {
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
 
   make check
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
 
   make DESTDIR="${pkgdir}" install
 }
