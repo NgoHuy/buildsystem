@@ -1,12 +1,9 @@
-# $Id: PKGBUILD 93624 2013-07-07 16:14:01Z bluewind $
-# Maintainer:  Ionut Biru <ibiru@archlinux.org
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer:  Ionut Biru <ibiru@archlinux.org
+# Original Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Original Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
 
 _pkgbasename=gtk2
-pkgname=lib32-$_pkgbasename
-pkgver=2.24.20
-pkgrel=2
 pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -19,8 +16,6 @@ options=('!libtool' '!docs')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch)
-sha256sums=('cc66bcbf9239a7d9861175c681ba95894b55c70dc0b37aad8345c46ecfda0da3'
-'d758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
