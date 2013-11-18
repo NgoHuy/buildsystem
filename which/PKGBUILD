@@ -1,6 +1,6 @@
-# $Id: PKGBUILD 176099 2013-01-27 12:31:30Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Allan McRae <allan@archlinux.org>
+# Original Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgdesc="A utility to show the full path of commands"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ install=which.install
 source=(http://www.xs4all.nl/~carlo17/$pkgbase/$pkgbase-$pkgver.tar.gz)
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install
 }
