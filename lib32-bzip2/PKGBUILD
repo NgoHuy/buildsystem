@@ -1,11 +1,8 @@
-#$Id: PKGBUILD 78820 2012-10-25 06:47:28Z foutrelis $
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: TryA <tryagainprod {at} gmail.com>
+#Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Original Contributor: TryA <tryagainprod {at} gmail.com>
 
 _pkgbasename=bzip2
-pkgname=lib32-bzip2
-pkgver=1.0.6
-pkgrel=1
 pkgdesc="A high-quality data compression program (32-bit)"
 arch=('x86_64')
 license=('custom')
@@ -13,7 +10,6 @@ url="http://sources.redhat.com/bzip2"
 depends=('lib32-glibc' $_pkgbasename)
 makedepends=('gcc-multilib')
 source=(http://www.bzip.org/$pkgver/bzip2-$pkgver.tar.gz)
-md5sums=('00b516f4704d4a7cb50a1d97e6e8e15b')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
