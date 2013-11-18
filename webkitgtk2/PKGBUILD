@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 188484 2013-06-14 23:03:22Z heftig $
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=webkitgtk2
-pkgver=1.10.2
-pkgrel=7
 pkgdesc="GTK+ Web content engine library for GTK+ 2.0"
 arch=(i686 x86_64)
 url="http://webkitgtk.org/"
@@ -17,7 +14,6 @@ conflicts=(libwebkit)
 replaces=(libwebkit)
 options=(!libtool !emptydirs)
 source=(http://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz)
-sha256sums=('19234f8e4edfaefe91ed06471a2aa8c71d26dd55d33787eede1dcfc9a3a96d9c')
 
 build() {
   cd webkitgtk-$pkgver
@@ -26,7 +22,7 @@ build() {
   CPPFLAGS+=" -Wno-unused-local-typedefs"
 
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
-    --libexecdir=/usr/lib/$pkgname \
+    --libexecdir=/usr/lib/$pkgbase \
     --enable-introspection \
     --disable-webkit2 \
     --with-gstreamer=0.10 \
@@ -41,6 +37,6 @@ build() {
 package() {
   cd webkitgtk-$pkgver
   make -j1 DESTDIR="$pkgdir" install
-  install -Dm644 Source/WebKit/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 Source/WebKit/LICENSE "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
   rm -r "$pkgdir/usr/share/gtk-doc/html/webkitgtk"
 }
