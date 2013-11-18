@@ -1,9 +1,6 @@
-# $Id: PKGBUILD 178003 2013-02-13 03:58:56Z allan $
-# Maintainer: 
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: 
 
-pkgname=groff
-pkgver=1.22.2
-pkgrel=2
 pkgdesc="GNU troff text-formatting system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/groff/groff.html"
@@ -17,23 +14,20 @@ source=(ftp://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz{,.sig}
         site.tmac)
 options=('!docs' '!emptydirs')
 install=groff.install
-md5sums=('9f4cd592a5efc7e36481d8d8d8af6d16'
-         '65207deb0a9b54324cb947f25ec9164f'
-         'a1fedafd7863b37968d32ad9ae1d8c13')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   ./configure --prefix=/usr --without-x
   make
 }
 
 check() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make check
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgbase-$pkgver
   make DESTDIR=$pkgdir install
   
   # add compatibility symlinks
