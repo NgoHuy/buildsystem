@@ -1,13 +1,10 @@
-# $Id: PKGBUILD 188504 2013-06-15 04:51:48Z bisson $
-# Contributor: Thayer Williams <thayer@archlinux.org>
-# Contributor: Hugo Doria <hugo@archlinux.org>
-# Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Contributor: Thayer Williams <thayer@archlinux.org>
+# Original Contributor: Hugo Doria <hugo@archlinux.org>
+# Original Contributor: TuxSpirit<tuxspirit@archlinux.fr>  2007/11/17 21:22:36 UTC
+# Original Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Original Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
-pkgname=p7zip
-pkgver=9.20.1
-pkgrel=7
 pkgdesc='Command-line version of the 7zip compressed file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
@@ -16,16 +13,14 @@ depends=('gcc-libs' 'bash')
 optdepends=('wxgtk: GUI'
             'desktop-file-utils: desktop entries')
 makedepends=('yasm' 'nasm' 'wxgtk')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}_src_all.tar.bz2"
+source=("http://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${pkgver}_src_all.tar.bz2"
         '7zFM.desktop')
-sha1sums=('1cd567e043ee054bf08244ce15f32cb3258306b7'
-          'f2c370d6f1b286b7ce9a2804e22541b755616a40')
 
 options=('!makeflags')
 install=install
 
 build() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${pkgbase}_${pkgver}"
 
 	[[ $CARCH = x86_64 ]] \
 	&& cp makefile.linux_amd64_asm makefile.machine \
@@ -35,7 +30,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${pkgbase}_${pkgver}"
 
 	make install \
 		DEST_DIR="${pkgdir}" \
