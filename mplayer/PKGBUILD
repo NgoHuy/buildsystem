@@ -1,11 +1,8 @@
-# $Id: PKGBUILD 193127 2013-08-17 00:43:52Z eric $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
-# Contributor: Hugo Doria <hugo@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Original Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgbase=mplayer
-pkgname=('mplayer' 'mencoder')
-pkgver=36285
-pkgrel=4
 arch=('i686' 'x86_64')
 makedepends=('libxxf86dga' 'libxxf86vm' 'libmad' 'libxinerama' 'sdl' 'lame' 'libtheora' 'xvidcore' 'libmng' 'libxss' 'libgl' 'smbclient'
 'aalib' 'jack' 'libcaca' 'x264' 'faac' 'faad2' 'lirc-utils'  'libxvmc' 'enca' 'libvdpau' 'opencore-amr' 'libdca' 'a52dec' 'schroedinger' 'libvpx'
@@ -17,10 +14,6 @@ source=(ftp://ftp.archlinux.org/other/packages/$pkgbase/$pkgbase-$pkgver.tar.xz
         mplayer.desktop
         cdio-includes.patch
         0001-demux_gif-declare-missing-PrintGifError.patch)
-md5sums=('5e4f0d4d039b0219514cf52ae6da831d'
-         'c0d6ef795cf6de48e3b87ff7c23f0319'
-         '7b5be7191aafbea64218dc4916343bbc'
-         '12a2a5b79849d57eab60a1bfec2978c4')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
