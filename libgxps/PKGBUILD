@@ -1,27 +1,23 @@
-# $Id: PKGBUILD 183798 2013-04-28 00:00:15Z foutrelis $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=libgxps
-pkgver=0.2.2
-pkgrel=3
 pkgdesc="XPS Documents library"
 arch=(i686 x86_64)
 url="https://live.gnome.org/libgxps"
 license=('GPL2')
 depends=('cairo' 'libarchive' 'libjpeg-turbo' 'libtiff' 'lcms2')
 options=(!libtool)
-source=(http://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('39d104739bf0db43905c315de1d8002460f1a098576f4418f69294013a5820be')
+source=(http://download.gnome.org/sources/$pkgbase/${pkgver%.*}/$pkgbase-$pkgver.tar.xz)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   ./configure --prefix=/usr \
     --disable-static
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 
