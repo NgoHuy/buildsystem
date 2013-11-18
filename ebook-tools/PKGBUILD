@@ -1,24 +1,20 @@
-# $Id: PKGBUILD 166336 2012-09-06 15:49:25Z giovanni $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Severus <severus@theslinux.org>
+# Original Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 
-pkgname=ebook-tools
-pkgver=0.2.2
-pkgrel=1
 pkgdesc="Tools for accessing and converting various ebook file formats"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/ebook-tools/"
 license=('custom')
 depends=('libzip' 'libxml2' 'convertlit')
 makedepends=('pkgconfig' 'cmake')
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('67bce67ceb72dcc3578d6a81ef92b29b')
+source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}"
 
   mkdir build
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
@@ -29,6 +25,6 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${srcdir}/${pkgbase}-${pkgver}/LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
